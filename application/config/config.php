@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/temple';
+$config['base_url']	= 'http://temple.irockwill.com';
 
 /*
 |--------------------------------------------------------------------------
