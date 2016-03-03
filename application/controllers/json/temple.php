@@ -8,7 +8,7 @@ class Temple extends CI_Controller {
 		header('content-type:application/json;charset=utf8');  
 	}
 
-	public function all2($page = 1,$num_per_page = 10)
+	public function all($page = 1,$num_per_page = 10)
 	{	
 		$temple_list = $this->json_temple_mdl->all_get($page,$num_per_page);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
