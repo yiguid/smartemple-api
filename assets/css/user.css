@@ -1,0 +1,30 @@
+#user-nav{
+	background-color: #cdad36;
+}
+
+#user-nav ul{
+	list-style-type : none;
+	margin: 0px;
+	padding: 0px;
+	height: 30px;
+}
+
+#user-nav li{
+	float: left;
+	width: 16.6%;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+}
+
+#user-nav a{
+	color: white;
+}
+
+#user-nav li:hover{
+	background-color: #BB9D2C;
+}
+
+#user-nav .active{
+	background-color: #BB9D2C;
+}

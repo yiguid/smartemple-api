@@ -1,0 +1,189 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, 
+fieldset, legend, input, button, textarea, p, blockquote, th, td{
+	font-family: '微软雅黑' !important;
+}
+
+a{
+	text-decoration: none !important;
+	color: #666;
+}
+
+.login-info{
+	color: #E40000;
+}
+
+.login-info a{
+	color: #E40000;
+}
+
+.row{
+	margin: 0px !important;
+}
+
+
+.v1-no-background{
+	background: none;
+	border: 1px solid #ffffff;
+	color: #666;
+}
+
+.v1-btn-brown{
+	font-size: 14px;
+	background: #938561;
+	color: white;
+	padding: 4px 20px;
+	line-height: 14px;
+	border:none;
+}
+
+.v1-btn-grey{
+	font-size: 14px;
+	background: #AFAFAF;
+	color: white;
+	padding: 4px 20px;
+	line-height: 14px;
+	border:none;
+}
+
+.v1-top{
+	background-color: #938561;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	color: white;
+}
+
+.v1-index{
+	background: url(../images/masterback.jpg);
+	background-size: cover;
+	min-height: 610px;
+}
+
+.v1-index-logo{
+	float: left;
+	padding: 4px 10px;
+}
+
+.v1-index-about{
+	float: right;
+	height: 68px;
+	font-size: 14px;
+	padding-right: 20px;
+	color: #666;
+	line-height: 68px;
+}
+
+.v1-index-content{
+	min-height:500px; 
+}
+
+.v1-index-banner{
+	height: 68px;
+}
+
+.v1-index-choose{
+	height: 400px;
+	padding-top: 100px;
+}
+
+.v1-index-choose-slogan{
+	font-size: 18px;
+	color: #938561;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+
+.v1-index-choose-btn{
+	text-align: center;
+	font-size: 16px;
+	padding: 10px;
+	width: 100px;
+	border-bottom: 1px solid #ccc;
+}
+
+.trigger{
+	margin-left: 20% !important;
+	-webkit-appearance: none;
+}
+
+.options{
+	margin-left: 20% !important;
+	-webkit-appearance: none;
+}
+
+.v1-index-login{
+	height: 150px;
+}
+
+.v1-index-input{
+	float: left;
+	padding-left: 20%;
+	margin-bottom: 12px;
+}
+
+.v1-index-input input{
+	background: none;
+	border: 1px solid #ffffff;
+	color: #666;
+}
+
+.v1-index-btn{
+	float: left;
+
+}
+
+.v1-index-btn a{
+	line-height: 26px;
+	background: #938561;
+	color: white;
+	padding: 4px 20px;
+}
+
+.v1-index-register{
+	margin-left: 4px;
+}
+
+.v1-footer{
+	background-color: #474b4c;
+	height: 24px;
+	color: #b3b3b3;
+	text-align: center;
+	line-height: 24px;
+	font-size: 12px;
+}
+.v1-w30{
+	width: 30%;
+	float: left;
+}
+
+.v1-w20{
+	width: 20%;
+	float: left;
+}
+
+.v1-w100{
+	width: 100%;
+	float: left;
+}
+
+.v1-index-login{
+	display: none;
+}
+
+@media screen and (max-width: 992px){
+
+	.v1-w20{
+		width: 100%;
+		float: left;
+	}
+
+	.v1-w30{
+	 	width: 100%;
+	 	float: left;
+	}
+
+	.v1-index-forget{
+		margin-left: 20%;
+	}
+}

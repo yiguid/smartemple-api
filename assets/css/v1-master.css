@@ -1,0 +1,33 @@
+.top{
+	background-color: #4E71AD !important;
+}
+
+.active{
+	background-color: #4E71AD !important;
+}
+
+.v1-nav-item:hover{
+	background-color: #4E71AD !important;
+}
+
+.main{
+	border-top: 2px solid #4E71AD !important;
+}
+
+.btn-primary{
+	background-color: #4E71AD !important;
+	border-color: #3E5988 !important;
+}
+
+.sidebar .active a{
+	background-color: #4E71AD !important;
+}
+
+.dropdown-menu>li>a:hover{
+	background-color: #4E71AD !important;
+}
+
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus{
+	background-color: #4E71AD !important;
+	border-color: #3E5988 !important;
+}

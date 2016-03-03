@@ -1,0 +1,42 @@
+.main{
+	padding-top: 20px;
+	min-height:400px;
+}
+
+.login{
+	padding: 30px 0;
+	background-color: #f5f5f5;
+}
+
+body{
+	background-color: #2e2b2b !important;
+}
+
+#footer{
+	padding-top: 20px;
+	padding-bottom: 10px;
+	height: 100px;
+	color: white;
+}
+
+#main{
+	background-color: #7b140f;
+	padding: 10px;
+}
+
+.alert{
+	background-color: #7B140F !important;
+	border-color: white !important;
+	color: white;
+}
+
+label{
+	color: white;
+}
+
+.master-reply{
+	border-radius: .25em;
+	font-size: 80%;
+	padding: 2px;
+	margin-bottom: 4px;
+}

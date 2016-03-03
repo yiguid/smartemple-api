@@ -1,0 +1,319 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, 
+fieldset, legend, input, button, textarea, p, blockquote, th, td{
+	font-family: '微软雅黑';
+}
+
+a{
+	text-decoration: none !important;
+}
+
+/* 提示自定义 */
+.stateTip, #StateTip{
+	display:none; position:absolute;
+	padding-left: 30px;
+	font-size:12px;color:#333;}
+
+.row{
+	margin:0px;
+}
+
+.top{
+	background-color: #938561;
+	height: 24px;
+	line-height: 24px;
+	color: white;
+}
+
+.banner{
+	height: 80px;
+	line-height: 80px;
+}
+
+.logo{
+	width: 160px;
+	font-size: 26px;
+	float: left;
+}
+
+.logo a{
+	text-decoration: none;
+	color: #209dea;
+}
+
+.banner-nav{
+	font-size: 16px;
+	color: #666;
+	min-width: 80px;
+	padding-right: 20px;
+	float: left;
+}
+
+.nav-right{
+	display: none;
+}
+
+.nav-info {
+	width: 200px;
+	float: left;
+	font-size: 18px;
+	color: #666;
+}
+
+.slider{
+	background: url(../images/visit.jpg) top center no-repeat;
+	height: 560px;
+}
+
+.map-info{
+	min-height: 400px;
+}
+
+.slider-map{
+	min-height: 400px;
+	background-color: #F9F9F9;
+}
+
+#china-map{
+	width: 70% !important;
+	text-align: center;
+	float: left;
+}
+
+#map-location{
+}
+
+#temple-map{
+	float: left;
+	width: 30%;
+	margin-top: 10px;
+	text-align: center;
+}
+
+#temple-map p{
+	margin-top: 10px;
+}
+
+.btn-visit-temple{
+	margin-bottom: 3px;
+}
+
+#map-register{
+	float: left;
+	width: 30%;
+	margin-top: 200px;
+	padding-top: 10px;
+	border-top: 1px solid #ddd;
+	color: #666;
+}
+
+#map-register a{
+	color: #666;
+}
+
+.main{
+	min-height: 400px;
+}
+
+.slider-back{
+	height: 240px;
+	width: 100%;
+	color: white;
+	font-size: 30px;
+	position: absolute;
+	z-index: 1;
+	top: 400px;
+	background-color: #111;
+	filter:alpha(opacity=50);
+	-moz-opacity:0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}
+
+.slider-slogan{
+	padding-left: 50px;
+	color: #aaa;
+	font-size: 60px;
+	line-height: 50px;
+	margin-top: 20px;
+	position: absolute;
+	z-index: 2;
+}
+
+.slider-slogan a{
+	color: #f1c40f;
+}
+
+.slider-slogan small{
+	font-size: 20px;
+}
+
+.info{
+	height: 320px;
+	padding-top: 30px;
+	color: white;
+}
+
+.info h1{
+	color: #eee;
+	font-size: 20px;
+}
+
+.info small a{
+	font-size: 10px;
+	color: #B3B3B3;
+}
+
+.info-panel{
+	width: 300px;
+}
+
+.wifi-logo{
+	margin-top: 4px;
+	padding-left: 30px;
+	width: 300px;
+}
+
+.wifi-info{
+	padding-left: 30px;
+	width: 250px;
+}
+
+.wifi-info a{
+	margin-left:50px;
+	color: #f1c40f;
+}
+
+.wifi-info-input{
+	margin-top: 10px;
+}
+
+@media screen and (max-width:767px){
+	.info-panel{
+		width: 100%;
+	}
+
+	.slogan{
+		height: 110px !important;
+	}
+
+	.main{
+		padding: 0px 8px !important;
+	}
+
+	.slogan p{
+		padding: 0px 10px !important;
+	}
+}
+
+#reg-login{
+	margin-top: 10px;
+	text-align: center;
+}
+
+.choose-temple{
+	margin-top: 30px;
+}
+
+.choose-temple a{
+	color: white;
+	margin-bottom: 2px;
+}
+
+.rt{
+	float: right;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.text-right{
+	text-align: right;
+}
+
+.slogan{
+	color: white;
+	height: 80px;
+	font-size: 16px;
+	line-height: 30px;
+	padding-top: 10px;
+	/*background: -moz-linear-gradient(left, #209dea, #f4b20b); /* Firefox */
+	/*background: -webkit-gradient(linear, left top, right top, color-stop(0, #209dea), color-stop(1, #f4b20b)); /* Saf4+, Chrome */
+	/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#209dea', endColorstr='#f4b20b', GradientType='1'); /* IE*/
+	background-color: #cdad36;
+}
+
+
+.footer{
+	height: 30px;
+	padding: 10px 0px;
+	line-height: 12px;
+	background-color: #474b4c;
+	color: #B3B3B3;
+	font-size: 12px;
+}
+
+
+.footer a{
+	background-color: #474b4c;
+	color: white;
+}
+
+@media screen and (max-width:1024px){
+	#china-map{
+		width: 100% !important;
+	}
+
+	#temple-map{
+		width: 100%;
+	}
+
+	#map-register{
+		width: 100%;
+		margin-bottom: 10px;
+		margin-top: 20px;
+	}
+
+	.nav-left{
+		display: none;
+	}
+	.nav-right{
+		display: block;
+	}
+	.slogan{
+		height: 80px;
+	}	
+
+	.slider{
+		height: 460px;
+	}
+
+	.slider-slogan{
+		padding-left: 10px;
+		font-size: 30px;
+		line-height: 40px;
+	}
+
+	.slider-slogan small{
+		font-size: 16px;
+	}
+
+	.info{
+		height: 300px;
+	}
+
+	.slider-back{
+		height: 150px;
+		top: 390px;
+	}
+
+	.wifi-logo{
+		padding-left: 2px;
+		width: 200px;
+	}
+
+	.wifi-info{
+		padding-left: 2px;
+		width: 220px;
+	}
+}
