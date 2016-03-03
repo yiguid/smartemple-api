@@ -1,0 +1,13 @@
+application/config/config.php
+application/config/database.php
+application/cache
+.htaccess
+.DS_Store
+application/output
+application/uploads
+assets/qrcode
+templeimg
+corpimg
+ueditor
+jssdk
+
