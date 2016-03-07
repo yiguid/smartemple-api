@@ -9,7 +9,7 @@
 		<a href="<?php echo base_url()."user/donation";?>">
 			<li <?php if($user_nav == 'donation') echo "class=\"active\""; ?> >
 			
-			<span class="glyphicon glyphicon-tint"></span> 捐 助</li></a>
+			<span class="glyphicon glyphicon-tint"></span> 功德榜</li></a>
 
 		<a href="<?php echo base_url()."user/news";?>">
 			<li <?php if($user_nav == 'news') echo "class=\"active\""; ?>>
@@ -19,7 +19,7 @@
 		<a href="<?php echo base_url()."user/activity";?>">
 			<li <?php if($user_nav == 'activity') echo "class=\"active\""; ?>>
 			
-			<span class="glyphicon glyphicon-book"></span> 禅 修</li></a>
+			<span class="glyphicon glyphicon-book"></span> 活 动</li></a>
 
 		<a href="<?php echo base_url()."user/volunteer";?>">
 			<li <?php if($user_nav == 'volunteer') echo "class=\"active\""; ?>>

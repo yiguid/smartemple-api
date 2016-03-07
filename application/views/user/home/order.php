@@ -20,15 +20,15 @@ $this->load->view('user/home/home_nav');
 		<tr>
 			<td>时间</td>
 			<td>众筹项目</td>
-			<td>捐赠资金</td>
 			<td>奖励</td>
+			<td>详情</td>
 		</tr>
 		<?php foreach($zhongchou as $z):?>  
 		<tr>
 			<td><?php echo $z->recordtime?></td>
 			<td><?php echo $z->zhongchoutitle?></td>
-			<td><?php echo $z->money?></td>
-			<td><?php echo $z->award?></td>
+			<td><?php echo $z->rewardstatus?></td>
+			<td><a href="<?php echo base_url()."user/home/zhongchou/".$z->recordid?>">查看</a></td>
 		</tr>
 		<?php endforeach;?>
 	</table>

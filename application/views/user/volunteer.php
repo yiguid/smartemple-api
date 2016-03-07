@@ -23,9 +23,9 @@ $this->load->view('v1_user_nav');
 		<a href="<?php echo base_url()."user/volunteer/id/$volunteer->id";?>" 
 			class="v1-list-group-item">
 			<div class="v1-list-news-item">
-			<div class="v1-list-news-templename"><?php echo "[".($volunteer->templename!=''?$volunteer->templename:'智慧寺院')."]";?></div>
+			<div class="v1-list-news-templename"><?php echo "[".($volunteer->templename!=''?$volunteer->templename:'智慧寺院网')."]";?></div>
 			<div class="v1-list-news-title"><?php echo $volunteer->title;?></div>
-			<div class="v1-list-news-date"><?php echo date('Y-m-d', strtotime($volunteer->inputtime));?></div>
+			<div class="v1-list-news-date">阅读：<?php echo $volunteer->views;?></div>
 			</div>
 		</a>
 		<?php }?>

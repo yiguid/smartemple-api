@@ -23,7 +23,7 @@ $this->load->view('v1_user_nav');
 		<a href="<?php echo base_url()."qf/temple/$qf->templeid";?>" 
 			class="v1-list-group-item">
 			<div class="v1-list-news-item">
-			<div class="v1-list-news-templename"><?php echo "[".($qf->templename!=''?$qf->templename:'智慧寺院')."]";?></div>
+			<div class="v1-list-news-templename"><?php echo "[".($qf->templename!=''?$qf->templename:'智慧寺院网')."]";?></div>
 			<div class="v1-list-news-title"><?php echo $qf->content;?></div>
 			<div class="v1-list-news-date"><?php echo date('Y-m-d', strtotime($qf->datetime));?></div>
 			</div>

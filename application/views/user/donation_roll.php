@@ -8,7 +8,7 @@ $this->load->view('v1_user_nav');
 	<?php foreach ($roll_list as $roll) {?>
 		<a href="<?php echo base_url()."temple/id/$roll->templeid";?>" class="v1-list-group-item">
 			<div class="v1-list-news-item">
-			<div class="v1-list-news-templename"><?php echo "[".($roll->templename!=''?$roll->templename:'智慧寺院')."]";?></div>
+			<div class="v1-list-news-templename"><?php echo "[".($roll->templename!=''?$roll->templename:'智慧寺院网')."]";?></div>
 			<div class="v1-list-news-title"><?php echo $roll->contact.'捐助'.$roll->total.'元';?></div>
 			<div class="v1-list-news-date"><?php echo date('Y-m-d', strtotime($roll->ordertime));?></div>
 			</div>

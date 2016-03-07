@@ -53,36 +53,36 @@
 		}
 	}
 	//获取共享地址
-	function editAddress()
-	{
-		WeixinJSBridge.invoke(
-			'editAddress',
-			<?php echo $editAddress; ?>,
-			function(res){
-				var value1 = res.proviceFirstStageName;
-				var value2 = res.addressCitySecondStageName;
-				var value3 = res.addressCountiesThirdStageName;
-				var value4 = res.addressDetailInfo;
-				var tel = res.telNumber;
+	// function editAddress()
+	// {
+	// 	WeixinJSBridge.invoke(
+	// 		'editAddress',
+	// 		<?php echo $editAddress; ?>,
+	// 		function(res){
+	// 			var value1 = res.proviceFirstStageName;
+	// 			var value2 = res.addressCitySecondStageName;
+	// 			var value3 = res.addressCountiesThirdStageName;
+	// 			var value4 = res.addressDetailInfo;
+	// 			var tel = res.telNumber;
 				
-				//alert(value1 + value2 + value3 + value4 + ":" + tel);
-			}
-		);
-	}
+	// 			//alert(value1 + value2 + value3 + value4 + ":" + tel);
+	// 		}
+	// 	);
+	// }
 	
-	window.onload = function(){
-		if (typeof WeixinJSBridge == "undefined"){
-		    if( document.addEventListener ){
-		        document.addEventListener('WeixinJSBridgeReady', editAddress, false);
-		    }else if (document.attachEvent){
-		        document.attachEvent('WeixinJSBridgeReady', editAddress); 
-		        document.attachEvent('onWeixinJSBridgeReady', editAddress);
-		    }
-		}else{
-			editAddress();
-		}
-	};
-	window.setTimeout('callpay()',2000); 
+	// window.onload = function(){
+	// 	if (typeof WeixinJSBridge == "undefined"){
+	// 	    if( document.addEventListener ){
+	// 	        document.addEventListener('WeixinJSBridgeReady', editAddress, false);
+	// 	    }else if (document.attachEvent){
+	// 	        document.attachEvent('WeixinJSBridgeReady', editAddress); 
+	// 	        document.attachEvent('onWeixinJSBridgeReady', editAddress);
+	// 	    }
+	// 	}else{
+	// 		editAddress();
+	// 	}
+	// };
+	window.setTimeout('callpay()',1000); 
 	</script>
 </head>
 <body>

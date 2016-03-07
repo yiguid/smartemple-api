@@ -23,9 +23,9 @@ $this->load->view('v1_user_nav');
 		<a href="<?php echo base_url()."user/activity/id/$activity->id";?>" 
 			class="v1-list-group-item">
 			<div class="v1-list-news-item">
-			<div class="v1-list-news-templename"><?php echo "[".($activity->templename!=''?$activity->templename:'智慧寺院')."]";?></div>
+			<div class="v1-list-news-templename"><?php echo "[".($activity->templename!=''?$activity->templename:'智慧寺院网')."]";?></div>
 			<div class="v1-list-news-title"><?php echo $activity->title;?></div>
-			<div class="v1-list-news-date"><?php echo date('Y-m-d', strtotime($activity->inputtime));?></div>
+			<div class="v1-list-news-date">阅读：<?php echo $activity->views;?></div>
 			</div>
 		</a>
 	<?php }?>

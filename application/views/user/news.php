@@ -15,16 +15,50 @@ $this->load->view('v1_user_nav');
 		<?php $num++;}?>
 	</div>
 </div>
-
+<div class="row">
+<div class="container">
+	<div class="">
+		<div class="v1-list-news-item text-danger text-center">十大热门新闻</div>
+	<?php foreach ($news_hot as $news) {?>
+		<a href="<?php echo base_url()."user/news/id/$news->id";?>" class="v1-list-group-item">
+			<div class="v1-list-news-item">
+			<div class="v1-list-news-templename"><?php echo "[".($news->templename!=''?$news->templename:'智慧寺院网')."]";?></div>
+			<div class="v1-list-news-title"><?php echo $news->title;?></div>
+			<div class="v1-list-news-date">阅读：<?php echo $news->views;?></div>
+			</div>
+		</a>
+	<?php }
+	?>
+	</div>
+</div>
+</div>
+<div class="row">
+<div class="container">
+	<div class="">
+		<div class="v1-list-news-item text-danger text-center">本月热门新闻</div>
+	<?php foreach ($news_30_hot as $news) {?>
+		<a href="<?php echo base_url()."user/news/id/$news->id";?>" class="v1-list-group-item">
+			<div class="v1-list-news-item">
+			<div class="v1-list-news-templename"><?php echo "[".($news->templename!=''?$news->templename:'智慧寺院网')."]";?></div>
+			<div class="v1-list-news-title"><?php echo $news->title;?></div>
+			<div class="v1-list-news-date">阅读：<?php echo $news->views;?></div>
+			</div>
+		</a>
+	<?php }
+	?>
+	</div>
+</div>
+</div>
 <div class="row">
 <div class="container">
 	<div class="v1-list-group">
+		<div class="v1-list-news-item text-danger text-center">最近新闻</div>
 	<?php foreach ($news_list as $news) {?>
 		<a href="<?php echo base_url()."user/news/id/$news->id";?>" class="v1-list-group-item">
 			<div class="v1-list-news-item">
-			<div class="v1-list-news-templename"><?php echo "[".($news->templename!=''?$news->templename:'智慧寺院')."]";?></div>
+			<div class="v1-list-news-templename"><?php echo "[".($news->templename!=''?$news->templename:'智慧寺院网')."]";?></div>
 			<div class="v1-list-news-title"><?php echo $news->title;?></div>
-			<div class="v1-list-news-date"><?php echo date('Y-m-d', strtotime($news->inputtime));?></div>
+			<div class="v1-list-news-date">阅读：<?php echo $news->views;?></div>
 			</div>
 		</a>
 	<?php }

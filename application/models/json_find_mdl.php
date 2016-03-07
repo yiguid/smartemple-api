@@ -12,8 +12,8 @@ class Json_find_mdl extends CI_Model {
 		$this->db->select('temple.id,temple.name,temple.province,temple.city,temple.master,temple.homeimg,master_detail.avatar,temple_qf_count.qfcount as views');
 		$this->db->from('temple');		
 		$this->db->join('user','user.templeid = temple.id');
-		$this->db->join('master_detail','master_detail.masterid = user.id');
-		$this->db->join('temple_qf_count','temple_qf_count.templeid = temple.id');
+		$this->db->join('master_detail','master_detail.masterid = user.id','left');
+		$this->db->join('temple_qf_count','temple_qf_count.templeid = temple.id','left');
 		$this->db->where('temple.closed',0);
 		$this->db->where('temple.verified',1);
 		$this->db->where('user.type','master');	
@@ -28,10 +28,10 @@ class Json_find_mdl extends CI_Model {
 	{
 		$this->db->select('user.id,user.realname,master_detail.avatar,master_detail.views,temple.name');
 		$this->db->from('user');	
-		$this->db->join('master_detail','master_detail.masterid = user.id');
-		$this->db->join('temple','temple.id = user.templeid');	
-		$this->db->order_by('master_detail.pos','desc');	
+		$this->db->join('master_detail','master_detail.masterid = user.id','left');
+		$this->db->join('temple','temple.id = user.templeid');		
 		$this->db->where('user.type','master');	
+		$this->db->order_by('master_detail.pos','desc');	
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);		
 		$query = $this->db->get();
 		return $query->result();
@@ -53,8 +53,8 @@ class Json_find_mdl extends CI_Model {
 		$time = date('Y-m-d H:i:s',strtotime('now'));
 		$this->db->select('id,title,description,starttime,endtime,location,views,like');
 		$this->db->from('activity');
-		$this->db->order_by('inputtime','desc');
-		$this->db->where('endtime >',$time);				
+		$this->db->where('endtime >',$time);	
+		$this->db->order_by('inputtime','desc');			
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);	
 		$query = $this->db->get();
 		return $query->result();

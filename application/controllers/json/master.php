@@ -35,21 +35,21 @@ class Master extends CI_Controller {
 
 	public function timeline($page = 1,$num_per_page = 10)
 	{
-		$id = 19;
+		$id = 129;
 		$master_list = $this->json_master_mdl->timeline_get($id,$page,$num_per_page);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
 	public function voice($page = 1,$num_per_page = 10)
 	{
-		$id = 19;
+		$id = 55;
 		$master_list = $this->json_master_mdl->voice_get($id,$page,$num_per_page);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
 	public function question($page = 1,$num_per_page = 10)
 	{
-		$id = 19;
+		$id = 49;
 		$master_list = $this->json_master_mdl->question_get($id,$page,$num_per_page);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}

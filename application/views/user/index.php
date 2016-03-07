@@ -16,7 +16,7 @@ $this->load->view('user/user_nav');
 	<?php }?>
 	</div>
 	<div class="alert alert-info" role="alert">
-		<h3>禅修活动</h3>
+		<h3>活动</h3>
 	</div>
 	<div class="list-group">
 	<?php foreach ($activity_list as $activity) {?>

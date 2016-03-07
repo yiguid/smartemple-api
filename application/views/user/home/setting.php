@@ -38,9 +38,9 @@ $this->load->view('user/home/home_nav');
 	</div>
 </div>
 <div class="container">
-	<h4 class="v1-divider">详细信息 <small>用于报名禅修，义工等寺院活动</small></h4>
+	<h4 class="v1-divider">详细信息 <small>必填信息，用于报名活动，义工等寺院活动</small></h4>
 	<div class="col-md-8 col-md-offset-2">
-		<form action="<?php echo base_url()."user/home/update_detail";?>" method="post" class="form-horizontal" role="form">
+		<form action="<?php echo base_url()."user/home/update_detail_must";?>" method="post" class="form-horizontal" role="form">
 		  <div class="form-group">
 		    <label class="col-sm-4 control-label">性别</label>
 		    <div class="col-sm-6">
@@ -51,15 +51,31 @@ $this->load->view('user/home/home_nav');
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label class="col-sm-4 control-label">年龄</label>
-		    <div class="col-sm-6">
-		      <input type="text" class="form-control" value="<?php if(isset($user)) echo $user->age; else echo set_value('age')?>" name="age" id="age" placeholder="年龄"><?php echo form_error('age')?>
-		    </div>
-		  </div>
-		  <div class="form-group">
 		    <label class="col-sm-4 control-label">身份证号</label>
 		    <div class="col-sm-6">
 		      <input type="text" class="form-control" value="<?php if(isset($user)) echo $user->idcard; else echo set_value('idcard')?>" name="idcard" id="idcard" placeholder="身份证号"><?php echo form_error('idcard')?>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-4 col-sm-2">
+		      <button type="submit" class="btn btn-primary btn-block">保存</button>
+		    </div>
+		    <div class="col-sm-2">
+		    	<button type="reset" class="btn btn-default btn-block">重置</button>
+		    </div>
+		  </div>
+		</form>
+	</div>
+</div>
+</div>
+<div class="container">
+	<h4 class="v1-divider">详细信息 <small>选填</small></h4>
+	<div class="col-md-8 col-md-offset-2">
+		<form action="<?php echo base_url()."user/home/update_detail";?>" method="post" class="form-horizontal" role="form">
+		  <div class="form-group">
+		    <label class="col-sm-4 control-label">年龄</label>
+		    <div class="col-sm-6">
+		      <input type="text" class="form-control" value="<?php if(isset($user)) echo $user->age; else echo set_value('age')?>" name="age" id="age" placeholder="年龄"><?php echo form_error('age')?>
 		    </div>
 		  </div>
 		  <div class="form-group">
@@ -142,7 +158,7 @@ $this->load->view('user/home/home_nav');
 		       </select><?php echo form_error('guiyifou')?>
 		    </div>
 		  </div>
-		  <div class="form-group">
+		  <!-- <div class="form-group">
 		    <label class="col-sm-4 control-label">皈依时间</label>
 		    <div class="col-sm-6">
 		      <div class="input-group date form-line" id="guiyi-time" data-date-format="yyyy-mm-dd">
@@ -151,7 +167,7 @@ $this->load->view('user/home/home_nav');
 			    <div class="input-group-addon"><i class="glyphicon glyphicon-time"></i></div>
 				</div><?php echo form_error('guiyitime')?>
 		    </div>
-		  </div>
+		  </div> -->
 		  <div class="form-group">
 		    <label class="col-sm-4 control-label">签名档</label>
 		    <div class="col-sm-6">

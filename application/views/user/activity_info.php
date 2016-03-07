@@ -17,7 +17,7 @@ $this->load->view('v1_user_nav');
 		<div class="form-line v1-activity-time">日期：<?php if(isset($activity)) echo date('Y年m月d日', strtotime($activity->starttime)).' 至 '.date('Y年m月d日', strtotime($activity->endtime));?></div>
 		<div class="form-line v1-activity-time">时间：<?php if(isset($activity)) echo date('H:i', strtotime($activity->starttime)).' - '.date('H:i', strtotime($activity->endtime));?></div>
 		<div class="form-line v1-activity-time">地点：<?php if(isset($activity)) echo $activity->location;?></div>
-		<div class="form-line v1-activity-time">费用：<?php if($activity->cost > 0) echo $activity->cost."元/人"; else echo '免费';?>
+		<div class="form-line v1-activity-time">费用：<?php if($activity->cost > 0) echo $activity->cost."元/人"; else echo '随喜';?>
 		</div>
 		<div class="form-line v1-activity-cost">
 		报名情况：
@@ -57,7 +57,7 @@ $this->load->view('v1_user_nav');
 			echo "<span class=\"btn btn-default\">".$register->applicant."</span>";
 		}?>
 		</div>
-		<div><p><?php echo $activity->content?></p></div>
+		<div class="v1-page-news-content"><p><?php echo $activity->content?></p></div>
 	<div class="modal fade" id="regist-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -95,3 +95,55 @@ $this->load->view('v1_user_nav');
 
 <?php $this->load->view('alert_modal');?>
 <?php $this->load->view('login_modal');?>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+wx.config({
+
+    debug: false,
+    appId: '<?php echo $sign_package["appId"];?>',
+    timestamp: <?php echo $sign_package["timestamp"];?>,
+    nonceStr: '<?php echo $sign_package["nonceStr"];?>',
+    signature: '<?php echo $sign_package["signature"];?>',
+    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
+
+});
+
+wx.ready(function () {
+// 在这里调用 API
+// 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareTimeline({
+        title: '<?php echo $share_title;?>', // 分享标题
+        link: "<?php echo $share_link;?>",
+        imgUrl: "<?php echo base_url().$share_img;?>" // 分享图标
+    });
+    // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareAppMessage({
+        title: '<?php echo $share_title;?>', // 分享标题
+        desc: "<?php echo $share_desc;?>", // 分享描述
+        link: "<?php echo $share_link;?>",
+        imgUrl: "<?php echo base_url().$share_img;?>", // 分享图标
+        type: 'link', // 分享类型,music、video或link，不填默认为link
+    });
+
+    wx.onMenuShareQQ({
+        title: '<?php echo $share_title;?>', // 分享标题
+        desc: "<?php echo $share_desc;?>", // 分享描述
+        link: "<?php echo $share_link;?>",
+        imgUrl: "<?php echo base_url().$share_img;?>", // 分享图标
+    });
+
+    wx.onMenuShareWeibo({
+        title: '<?php echo $share_title;?>', // 分享标题
+        desc: "<?php echo $share_desc;?>", // 分享描述
+        link: "<?php echo $share_link;?>",
+        imgUrl: "<?php echo base_url().$share_img;?>", // 分享图标
+    });
+
+    wx.onMenuShareQZone({
+        title: '<?php echo $share_title;?>', // 分享标题
+        desc: "<?php echo $share_desc;?>", // 分享描述
+        link: "<?php echo $share_link;?>",
+        imgUrl: "<?php echo base_url().$share_img;?>", // 分享图标
+    });
+});
+</script>

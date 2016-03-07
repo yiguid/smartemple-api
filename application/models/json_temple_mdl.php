@@ -27,9 +27,9 @@ class Json_temple_mdl extends CI_Model {
 	{
 		$this->db->select('name,province,city,master');
 		$this->db->from('temple');	
-		//$this->db->join('user','user.id = temple.id');	
-		$this->db->limit($num_per_page,($page - 1) * $num_per_page);
-		$this->db->where('closed',0);
+		//$this->db->join('user','user.id = temple.id');
+		$this->db->where('closed',0);	
+		$this->db->limit($num_per_page,($page - 1) * $num_per_page);		
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -109,9 +109,9 @@ class Json_temple_mdl extends CI_Model {
 	public function news_get($id, $page, $num_per_page)
 	{
 		$this->db->select('id,like,title,updatetime,views');
-		$this->db->from('news');			
-		$this->db->order_by('updatetime','desc');
+		$this->db->from('news');					
 		$this->db->where('templeid',$id);	
+		$this->db->order_by('updatetime','desc');
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);		
 		$query = $this->db->get();
 		return $query->result();
@@ -120,9 +120,9 @@ class Json_temple_mdl extends CI_Model {
 	public function activity_get($id, $page, $num_per_page)
 	{		
 		$this->db->select('id,title,inputtime,views,like');
-		$this->db->from('activity');
-		$this->db->order_by('inputtime','desc');
-		$this->db->where('hostid',$id);						
+		$this->db->from('activity');		
+		$this->db->where('hostid',$id);
+		$this->db->order_by('inputtime','desc');						
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);	
 		$query = $this->db->get();
 		return $query->result();
@@ -131,9 +131,9 @@ class Json_temple_mdl extends CI_Model {
 	public function volunteer_get($id, $page, $num_per_page)
 	{
 		$this->db->select('id,title,inputtime,views,like');
-		$this->db->from('volunteer');
-		$this->db->order_by('inputtime','desc');
+		$this->db->from('volunteer');		
 		$this->db->where('hostid',$id);	
+		$this->db->order_by('inputtime','desc');
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);					        
 		$query = $this->db->get();
 		return $query->result();
@@ -141,10 +141,12 @@ class Json_temple_mdl extends CI_Model {
 
 	public function wish_get($id, $page, $num_per_page)
 	{
-		$this->db->select('userid,content,datetime');	
+		$this->db->select('userid,content,datetime,location');	
 		$this->db->from('wishboard');		
-		$this->db->order_by('datetime','desc');	
-		$this->db->where('templeid',$id);			
+		$this->db->where('templeid',$id);
+		$this->db->where('status',1);
+		$this->db->where('parentid',0);
+		$this->db->order_by('datetime','desc');				
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);						
 		$query = $this->db->get();
 		return $query->result();
