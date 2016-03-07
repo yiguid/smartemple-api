@@ -33,6 +33,13 @@ class Master extends CI_Controller {
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
+	public function masterinfo($page = 1,$num_per_page = 10)
+	{
+		$id = 8;
+		$master_list = $this->json_master_mdl->masterinfo_get($id,$page,$num_per_page);	
+		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
+	}
+
 	public function timeline($page = 1,$num_per_page = 10)
 	{
 		$id = 129;

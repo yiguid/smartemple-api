@@ -7,6 +7,7 @@ http://temple.irockwill.com/json/master/all/$i/$j              返回全部法�
 http://temple.irockwill.com/json/master/recommend/$i/$j        返回推荐法师的信息
 http://temple.irockwill.com/json/master/hot/$i/$j              返回热门法师的信息
 http://temple.irockwill.com/json/master/search/$i/$j           返回与搜索关键字相关法师的信息
+http://temple.irockwill.com/json/master/masterinfo/$i/$j       返回选中法师的基本信息
 http://temple.irockwill.com/json/master/timeline/$i/$j         返回选中法师的时光轴信息
 http://temple.irockwill.com/json/master/voice/$i/$j            返回选中法师的语音开示信息
 http://temple.irockwill.com/json/master/question/$i/$j         返回选中法师的问答信息
@@ -16,6 +17,7 @@ http://temple.irockwill.com/json/temple/all/$i/$j              返回全部寺�
 http://temple.irockwill.com/json/temple/recommend/$i/$j        返回推荐寺院的信息
 http://temple.irockwill.com/json/temple/hot/$i/$j              返回热门寺院的信息
 http://temple.irockwill.com/json/temple/search/$i/$j           返回与搜索关键字相关寺院的信息
+http://temple.irockwill.com/json/temple/templeinfo/$i/$j       返回选中寺院的基本信息
 http://temple.irockwill.com/json/temple/donation/$i/$j         返回选中寺院的捐助信息
 http://temple.irockwill.com/json/temple/news/$i/$j             返回选中寺院的新闻信息
 http://temple.irockwill.com/json/temple/activity/$i/$j         返回选中寺院的活动信息
