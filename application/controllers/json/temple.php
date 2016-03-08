@@ -33,16 +33,9 @@ class Temple extends CI_Controller {
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function templeinfo($page = 1,$num_per_page = 10)
-	{
-		$id = 8;
-		$temple_list = $this->json_temple_mdl->templeinfo_get($id,$page,$num_per_page);	
-		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
-	}
-
 	public function search($page = 1,$num_per_page = 10)
 	{		 	
-		$temple_name = $this->input->post('temple_name');
+		$temple_name = '古';
 		$temple_list = $this->json_temple_mdl->search_get($temple_name,$page,$num_per_page);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
