@@ -51,7 +51,7 @@ class Dadeshuo_mdl extends CI_Model {
 		$this->db->from('dadeshuo_answer a');
 		$this->db->join('user u','u.id=a.userid');
 		$this->db->join('master_detail m','m.masterid=a.userid');
-		$this->db->where('a.id',$id);				
+		$this->db->where('a.questionid',$id);				
 		$query = $this->db->get();
 		return $query->result();
 	}

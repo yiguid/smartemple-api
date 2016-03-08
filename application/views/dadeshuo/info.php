@@ -9,7 +9,7 @@ $this->load->view('v1_header');
 	
 	?></br>
 	<?php foreach ($answer as $q) 
-			echo  $q->realname." ".$q->avatar;
+			echo  $q->realname.",".$q->avatar.",".$q->content;
 	
 	?>
 	</div>
