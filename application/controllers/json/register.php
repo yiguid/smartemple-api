@@ -28,7 +28,7 @@ class Register extends CI_Controller {
 
 	public function vcode_commit()
 	{
-		$mobile = $this->input->post('paramater phone');			
+		$mobile = $this->input->post('phone');			
 		if($this->json_register_mdl->exist($mobile)){			
 			echo 1;       return ;             //如果该手机号已注册
 		}
@@ -53,7 +53,7 @@ class Register extends CI_Controller {
 
 	public function register_commit()
 	{		
-		$captcha = $this->input->post('paramater vcode');
+		$captcha = $this->input->post('vcode');
 		$mobile = $this->session->userdata('mobile');		
 		if($this->session->userdata('captcha') != $captcha)
 		{

@@ -35,42 +35,37 @@ class Temple extends CI_Controller {
 
 	public function search($page = 1,$num_per_page = 10)
 	{		 	
-		$temple_name = '古';
+		$temple_name = $this->input->post("searchtemple");
 		$temple_list = $this->json_temple_mdl->search_get($temple_name,$page,$num_per_page);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function donation($page = 1,$num_per_page = 10)
-	{		 	
-		$id = 21;		
+	public function donation($id,$page = 1,$num_per_page = 10)
+	{		 					
 		$temple_list = $this->json_temple_mdl->donation_get($id,$page,$num_per_page,$type = 1);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function news($page = 1,$num_per_page = 10)
-	{		 	
-		$id = 88;		
+	public function news($id,$page = 1,$num_per_page = 10)
+	{		 			
 		$temple_list = $this->json_temple_mdl->news_get($id,$page,$num_per_page);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function activity($page = 1,$num_per_page = 10)
-	{		 	
-		$id = 49;		
+	public function activity($id,$page = 1,$num_per_page = 10)
+	{		 				
 		$temple_list = $this->json_temple_mdl->activity_get($id,$page,$num_per_page);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function volunteer($page = 1,$num_per_page = 10)
-	{		 	
-		$id = 21;		
+	public function volunteer($id,$page = 1,$num_per_page = 10)
+	{		 				
 		$temple_list = $this->json_temple_mdl->volunteer_get($id,$page,$num_per_page);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function wish($page = 1,$num_per_page = 10)
-	{		 	
-		$id = 21;		
+	public function wish($id,$page = 1,$num_per_page = 10)
+	{		 				
 		$temple_list = $this->json_temple_mdl->wish_get($id,$page,$num_per_page);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}

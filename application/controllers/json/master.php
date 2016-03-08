@@ -28,46 +28,41 @@ class Master extends CI_Controller {
 
 	public function search($page = 1,$num_per_page = 10)
 	{		 	
-		$master_name = '大';
+		$master_name = $this->input->post("searchmaster");
 		$master_list = $this->json_master_mdl->search_get($master_name,$page,$num_per_page);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
-	public function timeline($page = 1,$num_per_page = 10,$id)
+	public function timeline($id,$page = 1,$num_per_page = 10)
 	{		
 		$master_list = $this->json_master_mdl->timeline_get($id,$page,$num_per_page);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
-	public function voice($page = 1,$num_per_page = 10)
-	{
-		$id = 55;
+	public function voice($id,$page = 1,$num_per_page = 10)
+	{		
 		$master_list = $this->json_master_mdl->voice_get($id,$page,$num_per_page);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
-	public function question($page = 1,$num_per_page = 10)
-	{
-		$id = 49;
+	public function question($id,$page = 1,$num_per_page = 10)
+	{		
 		$master_list = $this->json_master_mdl->question_get($id,$page,$num_per_page);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
-	public function views()
-	{
-		$id = 129;
+	public function views($id)
+	{		
 		$this->json_master_mdl->views_get($id);			
 	}
 
-	public function likes()
-	{
-		$id = 129;
+	public function likes($id)
+	{		
 		$this->json_master_mdl->likes_get($id);			
 	}
 
-	public function liked()
-	{
-		$id = 129;
+	public function liked($id)
+	{		
 		$this->json_master_mdl->liked_get($id);			
 	}
 

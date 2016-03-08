@@ -8,44 +8,38 @@ class User extends CI_Controller {
 		header('content-type:application/json;charset=utf8');  
 	}
 
-	public function donation($page = 1,$num_per_page = 10)
-	{
-		$id = 15;
+	public function donation($id,$page = 1,$num_per_page = 10)
+	{		
 		$user_list = $this->json_user_mdl->donation_get($id,$page,$num_per_page);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
 
-	public function donation_zhongchou($page = 1,$num_per_page = 10)
-	{
-		$id = 11;
+	public function donation_zhongchou($id,$page = 1,$num_per_page = 10)
+	{	
 		$user_list = $this->json_user_mdl->donation_zhongchou_get($id,$page,$num_per_page);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
 
-	public function wish($page = 1,$num_per_page = 10)
-	{
-		$id = 31;
+	public function wish($id,$page = 1,$num_per_page = 10)
+	{	
 		$user_list = $this->json_user_mdl->wish_get($id,$page,$num_per_page);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
 
-	public function activity($page = 1,$num_per_page = 10)
+	public function activity($id,$page = 1,$num_per_page = 10)
 	{
-		$id = 15;
 		$user_list = $this->json_user_mdl->activity_get($id,$page,$num_per_page);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
 
-	public function volunteer($page = 1,$num_per_page = 10)
-	{		
-		$id = 15;	
+	public function volunteer($id,$page = 1,$num_per_page = 10)
+	{				
 		$user_list = $this->json_user_mdl->volunteer_get($id,$page,$num_per_page);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";	
 	}
 
-	public function setting()
-	{
-		$id = 15;		
+	public function setting($id)
+	{				
 		$user_list = $this->json_user_mdl->info($id);
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";	
 	}
