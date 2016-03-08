@@ -9,7 +9,7 @@ class Json_find_mdl extends CI_Model {
 
 	public function temple_get($page, $num_per_page)
 	{
-		$this->db->select('temple.id as templeid,user.id as masterid,temple.name,temple.province,temple.city,temple.master,temple.homeimg,master_detail.avatar,temple_qf_count.qfcount as views');
+		$this->db->select('temple.id as templeid,user.id as masterid,temple.name,temple.province,temple.city,temple.master,temple.website,temple.homeimg,master_detail.avatar,temple_qf_count.qfcount as views');
 		$this->db->from('temple');		
 		$this->db->join('user','user.templeid = temple.id');
 		$this->db->join('master_detail','master_detail.masterid = user.id','left');

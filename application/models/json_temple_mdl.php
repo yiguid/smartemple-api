@@ -9,7 +9,7 @@ class Json_temple_mdl extends CI_Model {
 
 	public function all_get($page, $num_per_page)
 	{
-		$this->db->select('temple.id as templeid,user.id as masterid,temple.name,temple.province,temple.city,temple.master,temple.homeimg,master_detail.avatar,temple_qf_count.qfcount as views');
+		$this->db->select('temple.id as templeid,user.id as masterid,temple.name,temple.province,temple.city,temple.master,temple.website,temple.homeimg,master_detail.avatar,temple_qf_count.qfcount as views');
 		$this->db->from('temple');		
 		$this->db->join('user','user.templeid = temple.id');
 		$this->db->join('master_detail','master_detail.masterid = user.id','left');
@@ -36,7 +36,7 @@ class Json_temple_mdl extends CI_Model {
 
 	public function recommend_get($page, $num_per_page)
 	{
-		$this->db->select('temple.id as templeid,user.id as masterid,temple.name,temple.province,temple.city,temple.master,temple.homeimg,master_detail.avatar,temple_qf_count.qfcount as views');
+		$this->db->select('temple.id as templeid,user.id as masterid,temple.name,temple.province,temple.city,temple.master,temple.website,temple.homeimg,master_detail.avatar,temple_qf_count.qfcount as views');
 		$this->db->from('temple');		
 		$this->db->join('user','user.templeid = temple.id');
 		$this->db->join('master_detail','master_detail.masterid = user.id','left');
@@ -53,7 +53,7 @@ class Json_temple_mdl extends CI_Model {
 
 	public function hot_get($page, $num_per_page)
 	{
-		$this->db->select('temple.id as templeid,user.id as masterid,temple.name,temple.province,temple.city,temple.master,temple.homeimg,master_detail.avatar,temple_qf_count.qfcount as views');
+		$this->db->select('temple.id as templeid,user.id as masterid,temple.name,temple.province,temple.city,temple.master,temple.website,temple.homeimg,master_detail.avatar,temple_qf_count.qfcount as views');
 		$this->db->from('temple');		
 		$this->db->join('user','user.templeid = temple.id');
 		$this->db->join('master_detail','master_detail.masterid = user.id','left');
@@ -70,7 +70,7 @@ class Json_temple_mdl extends CI_Model {
 
 	public function search_get($temple_name, $page, $num_per_page)
 	{
-		$this->db->select('temple.id as templeid,user.id as masterid,temple.name,temple.province,temple.city,temple.master,temple.homeimg,master_detail.avatar,temple_qf_count.qfcount as views');
+		$this->db->select('temple.id as templeid,user.id as masterid,temple.name,temple.province,temple.city,temple.master,temple.website,temple.homeimg,master_detail.avatar,temple_qf_count.qfcount as views');
 		$this->db->from('temple');		
 		$this->db->join('user','user.templeid = temple.id');
 		$this->db->join('master_detail','master_detail.masterid = user.id','left');
@@ -85,22 +85,32 @@ class Json_temple_mdl extends CI_Model {
 		return $query->result();
 	}
 
-	public function donation_get($id, $page, $num_per_page, $type)
+	public function donation_get($id, $page, $num_per_page)
 	{
 		$this->db->select('*');
 		$this->db->from('donation');
 		$this->db->where('templeid',$id);
-		switch ($type) {		
-			case '1':$this->db->where('type','佛像');break;
-			case '2':$this->db->where('type','十大供养');break;
-			case '3':$this->db->where('type','建材');break;
-			case '4':$this->db->where('type','日行一善');break;
-			case '5':$this->db->where('type','灯');break;
-			case '6':$this->db->where('type','花木');break;
-			case '7':$this->db->where('type','设备');break;
-			case '8':$this->db->where('type','随喜');break;
-			default:break;
-		}			  	
+		// switch ($type) {		
+		// 	case '1':$this->db->where('type','佛像');break;
+		// 	case '2':$this->db->where('type','十大供养');break;
+		// 	case '3':$this->db->where('type','建材');break;
+		// 	case '4':$this->db->where('type','日行一善');break;
+		// 	case '5':$this->db->where('type','灯');break;
+		// 	case '6':$this->db->where('type','花木');break;
+		// 	case '7':$this->db->where('type','设备');break;
+		// 	case '8':$this->db->where('type','随喜');break;
+		// 	default:break;
+		// }			  	
+		$this->db->limit($num_per_page,($page - 1) * $num_per_page);		
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function d_zhongchou_get($id, $page, $num_per_page)
+	{
+		$this->db->select('*');
+		$this->db->from('zhongchou');
+		$this->db->where('founderid',$id);			  
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);		
 		$query = $this->db->get();
 		return $query->result();

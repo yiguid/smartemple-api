@@ -42,7 +42,13 @@ class Temple extends CI_Controller {
 
 	public function donation($id,$page = 1,$num_per_page = 10)
 	{		 					
-		$temple_list = $this->json_temple_mdl->donation_get($id,$page,$num_per_page,$type = 1);	
+		$temple_list = $this->json_temple_mdl->donation_get($id,$page,$num_per_page);	
+		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
+	}
+
+	public function d_zhongchou($id,$page = 1,$num_per_page = 10)
+	{		 					
+		$temple_list = $this->json_temple_mdl->d_zhongchou_get($id,$page,$num_per_page);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 

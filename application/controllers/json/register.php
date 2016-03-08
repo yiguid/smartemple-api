@@ -57,17 +57,16 @@ class Register extends CI_Controller {
 		$mobile = $this->session->userdata('mobile');		
 		if($this->session->userdata('captcha') != $captcha)
 		{
-			echo 3; return ;     //验证码不正确
+			echo 3; return ;        //验证码不正确
 		}
 		else if($this->user_mdl->exist($mobile))
 		{
-			echo 2;              //用户名已存在
-			return ;
+			echo 2; return ;        //用户名已存在			
 		}			
 		$user = array('username' => $mobile,'password'=> $mobile,'realname' => substr_replace($mobile,'****',3,4), 'type' => 'user','templeid' => $this->session->userdata('page_templeid'),'registtime' => date("Y-m-d H:i:s",strtotime('now +8 hours')));
 		if($this->json_register_mdl->add($user))
 		{
-		echo 1;  return ;       //注册成功
+			echo 1;  return ;       //注册成功
 		}             					
 	}
 
