@@ -104,12 +104,15 @@ class Json_master_mdl extends CI_Model {
 	}
 
 	public function likes_get($id)
-	{		                                           
+	{	
+		$this->db->set('likes','likes+1',false);
+	 	$this->db->where('masterid',$id); 
+		$this->db->update('master_detail'); 	                                           
 	}
 
 	public function liked_get($id)
 	{
-		$this->db->set('likes','likes+1',false);
+		$this->db->set('likes','likes-1',false);
 	 	$this->db->where('masterid',$id); 
 		$this->db->update('master_detail');                                            
 	}

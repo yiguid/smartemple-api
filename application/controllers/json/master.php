@@ -33,9 +33,8 @@ class Master extends CI_Controller {
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
-	public function timeline($page = 1,$num_per_page = 10)
-	{
-		$id = 129;
+	public function timeline($page = 1,$num_per_page = 10,$id)
+	{		
 		$master_list = $this->json_master_mdl->timeline_get($id,$page,$num_per_page);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
@@ -56,19 +55,19 @@ class Master extends CI_Controller {
 
 	public function views()
 	{
-		$id = 49;
+		$id = 129;
 		$this->json_master_mdl->views_get($id);			
 	}
 
 	public function likes()
 	{
-		$id = 49;
+		$id = 129;
 		$this->json_master_mdl->likes_get($id);			
 	}
 
 	public function liked()
 	{
-		$id = 49;
+		$id = 129;
 		$this->json_master_mdl->liked_get($id);			
 	}
 

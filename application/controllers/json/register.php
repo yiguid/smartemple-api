@@ -23,21 +23,14 @@ class Register extends CI_Controller {
 	{
 		parent::__construct();		
 		$this->load->model('json_register_mdl');
+		$this->load->model('sms_mdl');
 	}
 
-	public function r()
-	{    		
-		 echo "<script language='javascript' src='".base_url()."assets/js/visi.js'>commit_mobile('".base_url()."');</script>";
-	}
-
-	public function ajax_commit_mobile()
+	public function vcode_commit()
 	{
-		//$mobile
-		extract($_REQUEST);
-		//如果该手机号已注册
-		if($this->json_register_mdl->exist($mobile)){
-			echo "{\"code\": 1,\"msg\": \"EXIST\"}";
-			return;
+		$mobile = $this->input->post('paramater phone');			
+		if($this->json_register_mdl->exist($mobile)){			
+			echo 1;       return ;             //如果该手机号已注册
 		}
 
 		//没有注册
@@ -58,134 +51,26 @@ class Register extends CI_Controller {
 		//echo "{\"code\": 0,\"msg\": \"OK\",\"result\": {\"count\": 1, \"fee\": 1,  \"sid\": 1097 }}";
 	}
 
-	public function ajax_default_commit_mobile()
-	{
-		//$mobile
-		extract($_REQUEST);
-		$str = md5(date('His').$mobile);
-		$str = preg_replace('|[a-zA-Z]+|','',$str);
-		$captcha = substr($str, 0, 6);
-		//测试环境
-		//$captcha = '123456';
-		//测试环境结束
-		$this->session->set_userdata('captcha',$captcha);
-		$this->session->set_userdata('mobile',$mobile);
-		//发送短信
-		//echo $this->sms_mdl->sendTemplateSMS($mobile,array($captcha,'5'),"1");
-		//echo md5(date('His'));
-		echo $this->sms_mdl->send_sms('1ca6d531984fed9cb4e276990f8c45d1'
-							,'【智慧寺院】您的验证码是'.$captcha.'。如非本人操作，请忽略本短信'
-							,$mobile);
-		//echo "{\"code\": 0,\"msg\": \"OK\",\"result\": {\"count\": 1, \"fee\": 1,  \"sid\": 1097 }}";
-	}
-
-	public function ajax_verify_mobile()
-	{
-		extract($_REQUEST);
-		$mobile = $this->session->userdata('mobile');
-		if($this->session->userdata('captcha') == $captcha && $mobile != ''){
-			//查看是否有存在已该手机号为用户名的用户
-			//如果有这个手机号的用户，直接的登录
-			if($this->json_register_mdl->exist($mobile)){
-				$this->json_register_mdl->login_with_username($mobile);
-			}
-			//如果没有，注册后登录
-			else{
-				$user = array('username' => $mobile,'password'=> $mobile,
-							  'realname' => substr_replace($mobile,'****',3,4), 'type' => 'user','templeid' => $this->session->userdata('page_templeid'),'registtime' => date("Y-m-d H:i:s"));
-				$this->json_register_mdl->regist($user);
-				$this->json_register_mdl->login_with_username($mobile);
-			}
-			echo true;
+	public function register_commit()
+	{		
+		$captcha = $this->input->post('paramater vcode');
+		$mobile = $this->session->userdata('mobile');		
+		if($this->session->userdata('captcha') != $captcha)
+		{
+			echo 3; return ;     //验证码不正确
 		}
-		else
-			echo false;
+		else if($this->user_mdl->exist($mobile))
+		{
+			echo 2;              //用户名已存在
+			return ;
+		}			
+		$user = array('username' => $mobile,'password'=> $mobile,'realname' => substr_replace($mobile,'****',3,4), 'type' => 'user','templeid' => $this->session->userdata('page_templeid'),'registtime' => date("Y-m-d H:i:s",strtotime('now +8 hours')));
+		if($this->json_register_mdl->add($user))
+		{
+		echo 1;  return ;       //注册成功
+		}             					
 	}
 
-	public function ajax_resetpwd_commit_mobile()
-	{
-		//$mobile
-		extract($_REQUEST);
-		//如果该手机号已注册
-		if($this->json_register_mdl->exist($mobile)){
-			$str = md5(date('His').$mobile);
-			$str = preg_replace('|[a-zA-Z]+|','',$str);
-			$captcha = substr($str, 0, 6);
-			//测试环境
-			//$captcha = '123456';
-			//测试环境结束
-			$this->session->set_userdata('captcha',$captcha);
-			$this->session->set_userdata('mobile',$mobile);
-			//发送短信
-			//echo $this->sms_mdl->sendTemplateSMS($mobile,array($captcha,'5'),"1");
-			//echo md5(date('His'));
-			$this->sms_mdl->send_sms('1ca6d531984fed9cb4e276990f8c45d1'
-								,'【智慧寺院】您的验证码是'.$captcha.'。如非本人操作，请忽略本短信'
-								,$mobile);
-			echo "1";
-		}
-		else
-			echo "0";
-
-		
-		//echo "{\"code\": 0,\"msg\": \"OK\",\"result\": {\"count\": 1, \"fee\": 1,  \"sid\": 1097 }}";
-	}
-
-	public function ajax_temple_commit_mobile()
-	{
-		//$mobile
-		extract($_REQUEST);
-		//如果该手机号未登记寺院
-		//测试阶段，一个手机号可以登记多个寺院
-		//if(!$this->data_mdl->register_mobile_exist($mobile)){
-		if(true){
-			$str = md5(date('His').$mobile);
-			$str = preg_replace('|[a-zA-Z]+|','',$str);
-			$captcha = substr($str, 0, 6);
-			//测试环境
-			//$captcha = '123456';
-			//测试环境结束
-			$this->session->set_userdata('captcha',$captcha);
-			$this->session->set_userdata('mobile',$mobile);
-			//发送短信
-			//echo $this->sms_mdl->sendTemplateSMS($mobile,array($captcha,'5'),"1");
-			//echo md5(date('His'));
-			$this->sms_mdl->send_sms('1ca6d531984fed9cb4e276990f8c45d1'
-								,'【智慧寺院】您的验证码是'.$captcha.'。如非本人操作，请忽略本短信'
-								,$mobile);
-			echo "0";
-		}
-		else
-			echo "1";
-		//echo "{\"code\": 0,\"msg\": \"OK\",\"result\": {\"count\": 1, \"fee\": 1,  \"sid\": 1097 }}";
-	}
-
-	public function ajax_temple_verify_mobile()
-	{
-		extract($_REQUEST);
-		$mobile = $this->session->userdata('mobile');
-		if($this->session->userdata('captcha') == $captcha && $mobile != ''){
-			echo true;
-		}
-		else
-			echo false;
-	}
-
-	public function ajax_resetpwd_verify_mobile()
-	{
-		extract($_REQUEST);
-		$mobile = $this->session->userdata('mobile');
-		if($this->session->userdata('captcha') == $captcha && $mobile != ''){
-			//查看是否有存在已该手机号为用户名的用户
-			//如果有这个手机号的用户，直接的登录
-			if($this->json_register_mdl->exist($mobile)){
-				$this->json_register_mdl->login_with_username($mobile);
-			}
-			echo true;
-		}
-		else
-			echo false;
-	}
 }
 
 /* End of file welcome.php */

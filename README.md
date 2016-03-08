@@ -2,6 +2,10 @@
 
 # $i为第几页，$j为显示多少条数据.默认为第一页显示十条
 
+注册：
+http://temple.irockwill.com/json/register/vcode_commit         发送验证码，返回1表示已被注册
+http://temple.irockwill.com/json/register/register_commit      注册验证，返回1表示注册成功,2表示用户名已存在,3表示验证码不正确
+
 法师：
 http://temple.irockwill.com/json/master/all/$i/$j              返回全部法师的信息
 http://temple.irockwill.com/json/master/recommend/$i/$j        返回推荐法师的信息
@@ -11,6 +15,9 @@ http://temple.irockwill.com/json/master/search/$i/$j           返回与搜索�
 http://temple.irockwill.com/json/master/timeline/$i/$j         返回选中法师的时光轴信息
 http://temple.irockwill.com/json/master/voice/$i/$j            返回选中法师的语音开示信息
 http://temple.irockwill.com/json/master/question/$i/$j         返回选中法师的问答信息
+http://temple.irockwill.com/json/master/views/$i/$j            选中法师的浏览量+1
+http://temple.irockwill.com/json/master/likes/$i/$j            选中法师的关注度+1
+http://temple.irockwill.com/json/master/liked/$i/$j            选中法师的关注度-1
 
 寺院：
 http://temple.irockwill.com/json/temple/all/$i/$j              返回全部寺院的信息
