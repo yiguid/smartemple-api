@@ -31,6 +31,7 @@ class Json_find_mdl extends CI_Model {
 		$this->db->join('master_detail','master_detail.masterid = user.id','left');
 		$this->db->join('temple','temple.id = user.templeid');		
 		$this->db->where('user.type','master');	
+		$this->db->where('master_detail.avatar !=','');
 		$this->db->order_by('master_detail.pos','desc');	
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);		
 		$query = $this->db->get();

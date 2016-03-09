@@ -8,62 +8,82 @@ class Master extends CI_Controller {
 		header('content-type:application/json;charset=utf8');  
 	}
 
-	public function all($page = 1,$num_per_page = 10)
-	{	
-		$master_list = $this->json_master_mdl->all_get($page,$num_per_page);	
+	public function all()
+	{		
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$master_list = $this->json_master_mdl->all_get($page,$limit);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
-	public function recommend($page = 1,$num_per_page = 10)
+	public function recommend()
 	{
-		$master_list = $this->json_master_mdl->recommend_get($page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$master_list = $this->json_master_mdl->recommend_get($page,$limit);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
-	public function hot($page = 1,$num_per_page = 10)
+	public function hot()
 	{
-		$master_list = $this->json_master_mdl->hot_get($page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$master_list = $this->json_master_mdl->hot_get($page,$limit);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
-	public function search($page = 1,$num_per_page = 10)
+	public function search()
 	{		 	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
 		$master_name = $this->input->post("searchmaster");		
-		$master_list = $this->json_master_mdl->search_get($master_name,$page,$num_per_page);	
+		$master_list = $this->json_master_mdl->search_get($master_name,$page,$limit);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
-	public function timeline($id,$page = 1,$num_per_page = 10)
-	{		
-		$master_list = $this->json_master_mdl->timeline_get($id,$page,$num_per_page);	
+	public function timeline()
+	{				
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$masterid = $this->input->post('masterid');
+		$master_list = $this->json_master_mdl->timeline_get($masterid,$page,$limit);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
-	public function voice($id,$page = 1,$num_per_page = 10)
-	{		
-		$master_list = $this->json_master_mdl->voice_get($id,$page,$num_per_page);	
+	public function voice()
+	{				
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$masterid = $this->input->post('masterid');
+		$master_list = $this->json_master_mdl->voice_get($masterid,$page,$limit);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
-	public function question($id,$page = 1,$num_per_page = 10)
-	{		
-		$master_list = $this->json_master_mdl->question_get($id,$page,$num_per_page);	
+	public function question()
+	{				
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$masterid = $this->input->post('masterid');
+		$master_list = $this->json_master_mdl->question_get($masterid,$page,$limit);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
-	public function views($id)
+	public function views()
 	{		
-		$this->json_master_mdl->views_get($id);			
+		$masterid = $this->input->post('masterid');
+		$this->json_master_mdl->views_add($masterid);			
 	}
 
-	public function likes($id)
+	public function likes()
 	{		
-		$this->json_master_mdl->likes_get($id);			
+		$masterid = $this->input->post('masterid');
+		$this->json_master_mdl->likes_add($masterid);			
 	}
 
-	public function liked($id)
+	public function liked()
 	{		
-		$this->json_master_mdl->liked_get($id);			
+		$masterid = $this->input->post('masterid');
+		$this->json_master_mdl->liked_low($masterid);			
 	}
 
 	private function json_unescaped_unicode($str)

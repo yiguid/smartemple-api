@@ -8,27 +8,35 @@ class Find extends CI_Controller {
 		header('content-type:application/json;charset=utf8');  
 	}
 
-	public function temple($page = 1,$num_per_page = 10)
-	{
-		$find_list = $this->json_find_mdl->temple_get($page,$num_per_page);	
+	public function temple()
+	{		
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$find_list = $this->json_find_mdl->temple_get($page,$limit);	
 		echo "{\"find\":".$this->json_unescaped_unicode(json_encode($find_list))."}";
 	}
 
-	public function master($page = 1,$num_per_page = 10)
+	public function master()
 	{
-		$find_list = $this->json_find_mdl->master_get($page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$find_list = $this->json_find_mdl->master_get($page,$limit);	
 		echo "{\"find\":".$this->json_unescaped_unicode(json_encode($find_list))."}";
 	}
 
-	public function news($page = 1,$num_per_page = 10)
+	public function news()
 	{
-		$find_list = $this->json_find_mdl->news_get($page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$find_list = $this->json_find_mdl->news_get($page,$limit);	
 		echo "{\"find\":".$this->json_unescaped_unicode(json_encode($find_list))."}";
 	}
 
-	public function activity($page = 1,$num_per_page = 10)
+	public function activity()
 	{
-		$find_list = $this->json_find_mdl->activity_get($page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$find_list = $this->json_find_mdl->activity_get($page,$limit);	
 		echo "{\"find\":".$this->json_unescaped_unicode(json_encode($find_list))."}";
 	}
 

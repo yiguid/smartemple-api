@@ -68,7 +68,7 @@ class Json_user_mdl extends CI_Model {
 		return $query->result();
 	}
 
-	public function info($id)
+	public function info_get($id)
 	{
 		$this->db->select('*');
         $this->db->from('user');

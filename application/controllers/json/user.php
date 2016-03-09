@@ -8,39 +8,55 @@ class User extends CI_Controller {
 		header('content-type:application/json;charset=utf8');  
 	}
 
-	public function donation($id,$page = 1,$num_per_page = 10)
+	public function donation()
 	{		
-		$user_list = $this->json_user_mdl->donation_get($id,$page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$userid = $this->input->post('userid');
+		$user_list = $this->json_user_mdl->donation_get($userid,$page,$limit);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
 
-	public function donation_zhongchou($id,$page = 1,$num_per_page = 10)
+	public function donation_zhongchou()
 	{	
-		$user_list = $this->json_user_mdl->donation_zhongchou_get($id,$page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$userid = $this->input->post('userid');
+		$user_list = $this->json_user_mdl->donation_zhongchou_get($userid,$page,$limit);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
 
-	public function wish($id,$page = 1,$num_per_page = 10)
+	public function wish()
 	{	
-		$user_list = $this->json_user_mdl->wish_get($id,$page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$userid = $this->input->post('userid');
+		$user_list = $this->json_user_mdl->wish_get($userid,$page,$limit);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
 
-	public function activity($id,$page = 1,$num_per_page = 10)
+	public function activity()
 	{
-		$user_list = $this->json_user_mdl->activity_get($id,$page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$userid = $this->input->post('userid');
+		$user_list = $this->json_user_mdl->activity_get($userid,$page,$limit);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
 
-	public function volunteer($id,$page = 1,$num_per_page = 10)
+	public function volunteer()
 	{				
-		$user_list = $this->json_user_mdl->volunteer_get($id,$page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$userid = $this->input->post('userid');
+		$user_list = $this->json_user_mdl->volunteer_get($userid,$page,$limit);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";	
 	}
 
-	public function setting($id)
-	{				
-		$user_list = $this->json_user_mdl->info($id);
+	public function info()
+	{					
+		$userid = $this->input->post('userid');
+		$user_list = $this->json_user_mdl->info_get($userid);
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";	
 	}
 
@@ -51,7 +67,7 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('realname','真实姓名','required|trim');
 		if($this->form_validation->run() == FALSE){
 			$this->data['home_nav'] = 'setting';
-			$this->data['user'] = $this->json_user_mdl->info($id);
+			$this->data['user'] = $this->json_user_mdl->info_get($id);
 			$this->load->view('user/home/setting',$this->data);
 		}else{
 			if($this->input->post('password') != ''){
@@ -80,7 +96,7 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('email','邮箱','valid_email|trim');
 		if($this->form_validation->run() == FALSE){
 			$this->data['home_nav'] = 'setting';
-			$this->data['user'] = $this->json_user_mdl->info($id);
+			$this->data['user'] = $this->json_user_mdl->info_get($id);
 			$this->load->view('user/home/setting',$this->data);
 		}else{
 			$user = array(

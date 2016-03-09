@@ -15,6 +15,7 @@ class Json_master_mdl extends CI_Model {
 		$this->db->join('master_detail','master_detail.masterid = user.id','left');	
 		$this->db->join('temple','temple.id = user.templeid');
 		$this->db->where('user.type','master');	
+		$this->db->where('master_detail.avatar !=','');
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);			
 		$query = $this->db->get();
 		return $query->result();
@@ -27,6 +28,7 @@ class Json_master_mdl extends CI_Model {
 		$this->db->join('master_detail','master_detail.masterid = user.id','left');
 		$this->db->join('temple','temple.id = user.templeid');	
 		$this->db->where('user.type','master');	
+		$this->db->where('master_detail.avatar !=','');
 		$this->db->order_by('master_detail.pos','desc');
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);		
 		$query = $this->db->get();
@@ -40,6 +42,7 @@ class Json_master_mdl extends CI_Model {
 		$this->db->join('master_detail','master_detail.masterid = user.id','left');
 		$this->db->join('temple','temple.id = user.templeid');						
 		$this->db->where('user.type','master');
+		$this->db->where('master_detail.avatar !=','');
 		$this->db->order_by('master_detail.views','desc');	
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);	
 		$query = $this->db->get();
@@ -96,21 +99,21 @@ class Json_master_mdl extends CI_Model {
         return $query->result();
 	}
 
-	public function views_get($id)
+	public function views_add($id)
 	{
 		$this->db->set('views','views+1',false);
 	 	$this->db->where('masterid',$id); 
 		$this->db->update('master_detail');                                            
 	}
 
-	public function likes_get($id)
+	public function likes_add($id)
 	{	
 		$this->db->set('likes','likes+1',false);
 	 	$this->db->where('masterid',$id); 
 		$this->db->update('master_detail'); 	                                           
 	}
 
-	public function liked_get($id)
+	public function liked_low($id)
 	{
 		$this->db->set('likes','likes-1',false);
 	 	$this->db->where('masterid',$id); 

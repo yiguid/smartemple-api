@@ -8,71 +8,97 @@ class Temple extends CI_Controller {
 		header('content-type:application/json;charset=utf8');  
 	}
 
-	public function all($page = 1,$num_per_page = 10)
+	public function all()
 	{	
-		$temple_list = $this->json_temple_mdl->all_get($page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');		
+		$temple_list = $this->json_temple_mdl->all_get($page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function attention($page = 1,$num_per_page = 10)
+	public function attention()
 	{
 		$id = $this->session->userdata('id');
-		$temple_list = $this->json_temple_mdl->attention_get($templeid_arr,$id,$page,$num_per_page);	
+		$temple_list = $this->json_temple_mdl->attention_get($templeid_arr,$id,$page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function recommend($page = 1,$num_per_page = 10)
+	public function recommend()
 	{
-		$temple_list = $this->json_temple_mdl->recommend_get($page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$temple_list = $this->json_temple_mdl->recommend_get($page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function hot($page = 1,$num_per_page = 10)
+	public function hot()
 	{
-		$temple_list = $this->json_temple_mdl->hot_get($page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$temple_list = $this->json_temple_mdl->hot_get($page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function search($page = 1,$num_per_page = 10)
+	public function search()
 	{		 	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
 		$temple_name = $this->input->post("searchtemple");	
-		$temple_list = $this->json_temple_mdl->search_get($temple_name,$page,$num_per_page);	
+		$temple_list = $this->json_temple_mdl->search_get($temple_name,$page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function donation($id,$page = 1,$num_per_page = 10)
-	{		 					
-		$temple_list = $this->json_temple_mdl->donation_get($id,$page,$num_per_page);	
-		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
-	}
-
-	public function d_zhongchou($id,$page = 1,$num_per_page = 10)
-	{		 					
-		$temple_list = $this->json_temple_mdl->d_zhongchou_get($id,$page,$num_per_page);	
-		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
-	}
-
-	public function news($id,$page = 1,$num_per_page = 10)
+	public function donation()
 	{		 			
-		$temple_list = $this->json_temple_mdl->news_get($id,$page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$templeid = $this->input->post('templeid');		
+		$temple_list = $this->json_temple_mdl->donation_get($templeid,$page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function activity($id,$page = 1,$num_per_page = 10)
+	public function d_zhongchou()
 	{		 				
-		$temple_list = $this->json_temple_mdl->activity_get($id,$page,$num_per_page);	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$templeid = $this->input->post('templeid');		
+		$temple_list = $this->json_temple_mdl->d_zhongchou_get($templeid,$page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function volunteer($id,$page = 1,$num_per_page = 10)
-	{		 				
-		$temple_list = $this->json_temple_mdl->volunteer_get($id,$page,$num_per_page);	
+	public function news()
+	{		
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$templeid = $this->input->post('templeid');	 			
+		$temple_list = $this->json_temple_mdl->news_get($templeid,$page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
-	public function wish($id,$page = 1,$num_per_page = 10)
-	{		 				
-		$temple_list = $this->json_temple_mdl->wish_get($id,$page,$num_per_page);	
+	public function activity()
+	{		 	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$templeid = $this->input->post('templeid');				
+		$temple_list = $this->json_temple_mdl->activity_get($templeid,$page,$limit);	
+		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
+	}
+
+	public function volunteer()
+	{		 		
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$templeid = $this->input->post('templeid');			
+		$temple_list = $this->json_temple_mdl->volunteer_get($templeid,$page,$limit);	
+		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
+	}
+
+	public function wish()
+	{		 	
+		$page = $this->input->get('page');
+		$limit = $this->input->get('limit');
+		$templeid = $this->input->post('templeid');				
+		$temple_list = $this->json_temple_mdl->wish_get($templeid,$page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 

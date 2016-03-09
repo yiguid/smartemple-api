@@ -151,7 +151,7 @@ class Json_temple_mdl extends CI_Model {
 
 	public function wish_get($id, $page, $num_per_page)
 	{
-		$this->db->select('userid,content,datetime,location');	
+		$this->db->select('userid,content,donationcontent,datetime,location');	
 		$this->db->from('wishboard');		
 		$this->db->where('templeid',$id);
 		$this->db->where('status',1);
