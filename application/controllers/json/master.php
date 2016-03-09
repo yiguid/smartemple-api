@@ -19,7 +19,7 @@ class Master extends CI_Controller {
 		}
 		else
 			$master_list = array('code'=>-1,'msg'=>'error');
-		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
+		echo $this->json_unescaped_unicode(json_encode($master_list));
 	}
 
 	public function all()
@@ -33,7 +33,7 @@ class Master extends CI_Controller {
 		}
 		else
 			$master_list = array('code'=>-1,'msg'=>'error');	
-		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
+		echo $this->json_unescaped_unicode(json_encode($master_list));
 	}
 
 	public function recommend()
@@ -47,7 +47,7 @@ class Master extends CI_Controller {
 		}
 		else
 			$master_list = array('code'=>-1,'msg'=>'error');
-		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
+		echo $this->json_unescaped_unicode(json_encode($master_list));
 	}
 
 	public function hot()
@@ -61,7 +61,7 @@ class Master extends CI_Controller {
 		}
 		else
 			$master_list = array('code'=>-1,'msg'=>'error');	
-		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
+		echo $this->json_unescaped_unicode(json_encode($master_list));
 	}
 
 	public function search()
@@ -76,7 +76,7 @@ class Master extends CI_Controller {
 		}
 		else
 			$master_list = array('code'=>-1,'msg'=>'error');
-		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
+		echo $this->json_unescaped_unicode(json_encode($master_list));
 	}
 
 	public function timeline()
@@ -91,7 +91,7 @@ class Master extends CI_Controller {
 		}
 		else
 			$master_list = array('code'=>-1,'msg'=>'error');
-		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
+		echo $this->json_unescaped_unicode(json_encode($master_list));
 	}
 
 	public function voice()
@@ -106,7 +106,7 @@ class Master extends CI_Controller {
 		}
 		else
 			$master_list = array('code'=>-1,'msg'=>'error');
-		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
+		echo $this->json_unescaped_unicode(json_encode($master_list));
 	}
 
 	public function question()
@@ -121,7 +121,7 @@ class Master extends CI_Controller {
 		}
 		else
 			$master_list = array('code'=>-1,'msg'=>'error');	
-		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
+		echo $this->json_unescaped_unicode(json_encode($master_list));
 	}
 
 	public function views()
