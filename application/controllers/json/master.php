@@ -70,19 +70,19 @@ class Master extends CI_Controller {
 
 	public function views()
 	{		
-		$masterid = $this->input->get('masterid');
+		$masterid = $this->input->post('masterid');
 		$this->json_master_mdl->views_add($masterid);			
 	}
 
 	public function likes()
 	{		
-		$masterid = $this->input->get('masterid');
+		$masterid = $this->input->post('masterid');
 		$this->json_master_mdl->likes_add($masterid);			
 	}
 
 	public function liked()
 	{		
-		$masterid = $this->input->get('masterid');
+		$masterid = $this->input->post('masterid');
 		$this->json_master_mdl->liked_low($masterid);			
 	}
 

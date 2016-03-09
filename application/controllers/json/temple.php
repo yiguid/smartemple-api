@@ -102,6 +102,39 @@ class Temple extends CI_Controller {
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
+	public function views()
+	{		 							
+	}
+
+	public function message()
+	{		 	
+		$data = array(
+					'parentid' => '0',
+					'userid' => $this->input->get('realname'),
+					'usertype' => 'user',
+					'content' => $this->input->get('content'),
+					'donationcontent' => null,
+					'datetime' => date("Y-m-d H:i:s",strtotime('now +8 hours')),
+					'templeid' => $this->input->get('templeid'),
+					'location' => $this->input->get('location'),
+					'recordid' => null,
+					'donationorderid' => null,
+					'fromurl' => $this->input->get('fromurl'),
+					'ip' => $this->input->get('ip'),
+					'userrealid' => $this->input->get('userid'),
+					'status' => '1'
+				);			
+		if($this->json_temple_mdl->message_insert($data))
+		{
+			echo 1;return ;
+		}			
+		else
+		{
+			echo 0;return ;
+		}
+		
+	}
+
 	private function json_unescaped_unicode($str)
 	{
 		return preg_replace_callback(

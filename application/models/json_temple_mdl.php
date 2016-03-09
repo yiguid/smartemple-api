@@ -161,5 +161,18 @@ class Json_temple_mdl extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	public function views_add($id)
+	{
+		$this->db->set('','+1',false);
+	 	$this->db->where('templeid',$id); 
+		$this->db->update('');                                            
+	}
+
+	public function message_insert($data)
+	{
+		$this->db->insert('wishboard',$data);
+		return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
+	}
 }
 ?>
