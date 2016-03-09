@@ -45,7 +45,7 @@ class Register extends CI_Controller {
 		{
 			echo 2;  return ;        //用户名已存在			
 		}			
-		$user = array('username' => $mobile,'password'=> $mobile,'realname' => substr_replace($mobile,'****',3,4), 'type' => 'user','templeid' => $this->session->userdata('page_templeid'),'registtime' => date("Y-m-d H:i:s",strtotime('now +8 hours')));
+		$user = array('username' => $mobile,'password'=> $mobile,'realname' => substr_replace($mobile,'****',3,4), 'type' => 'user','templeid' => $this->session->userdata('page_templeid'),'registtime' => date("Y-m-d H:i:s"));
 		if($this->json_register_mdl->add($user))
 		{
 			echo 1;  return ;       //注册成功

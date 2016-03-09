@@ -121,7 +121,7 @@ class Temple extends CI_Controller {
 					'usertype' => 'user',
 					'content' => $this->input->post('content'),
 					'donationcontent' => null,
-					'datetime' => date("Y-m-d H:i:s",strtotime('now +8 hours')),
+					'datetime' => date("Y-m-d H:i:s"),
 					'templeid' => $this->input->post('templeid'),
 					'location' => $this->input->post('location'),
 					'recordid' => null,
