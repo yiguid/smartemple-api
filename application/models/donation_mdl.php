@@ -125,6 +125,36 @@ class Donation_mdl extends CI_Model {
         return $entry;
 	}
 
+	$this->data['donation_info'] = $this->donation_mdl->get_temple_order_income($templeid, $rolltime);
+	public function get_temple_order_income($templeid,$rolltime = 'all')
+	{
+		//原有的是统计的供养的物品总数量，实际应该是总人数，一个订单可能有多个物品供养
+		// $this->db->select('sum(do.total) as income, sum(toic.count) as count');
+		$this->db->select('sum(do.total) as income, count(do.total) as count');
+        $this->db->from('donation_order do');
+        // $this->db->join('temple_order_item_count toic','do.id=toic.orderid');
+        if($templeid != 0)
+        	$this->db->where('templeid',$templeid);
+        $this->db->where('status','支付成功');
+        //这里不能直接or，要限定templeid了再or
+        //$this->db->or_where('status','登记成功');
+        //只显示本月的month，只显示本日的day
+        if($rolltime == 'month'){
+        	$date_str = date("Y-m");
+			$this->db->where('do.ordertime >',$date_str);
+        }else if($rolltime == 'day'){
+        	$date_str = date("Y-m-d");
+			$this->db->where('do.ordertime >',$date_str);
+        }else{
+        	//全部显示，不执行
+        	;
+        }
+
+        $query = $this->db->get();
+        $entry = $query->row();
+        return $entry;
+	}
+
 	public function get_order_info($orderid)
 	{
 		$this->db->select('*');

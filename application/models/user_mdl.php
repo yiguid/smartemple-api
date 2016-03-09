@@ -236,5 +236,16 @@ class User_mdl extends CI_Model {
 				return FALSE;
 		}
 	}
+
+	public function info_username($username)
+	{
+		$this->db->select('user.id,user.username,user.realname,user.type,user.templeid,user.registtime,user_detail.*');
+        $this->db->from('user');
+        $this->db->join('user_detail','user.id=user_detail.userid','left');
+        $this->db->where('user.username',$username);
+        $query = $this->db->get();
+        $entry = $query->row();
+        return $entry;
+	}
 }
 ?>

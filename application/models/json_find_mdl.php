@@ -17,6 +17,7 @@ class Json_find_mdl extends CI_Model {
 		$this->db->where('temple.closed',0);
 		$this->db->where('temple.verified',1);
 		$this->db->where('user.type','master');	
+		$this->db->where('master_detail.avatar !=','');
 		$this->db->order_by('temple.pos','desc');	
 		$this->db->group_by('temple.id');
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);

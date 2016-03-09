@@ -8,6 +8,13 @@ class Master extends CI_Controller {
 		header('content-type:application/json;charset=utf8');  
 	}
 
+	public function info()
+	{		
+		$masterid = $this->input->get('masterid');
+		$master_list = $this->json_master_mdl->info_get($masterid);	
+		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
+	}
+
 	public function all()
 	{		
 		$page = $this->input->get('page');

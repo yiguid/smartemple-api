@@ -7,6 +7,19 @@ class Json_master_mdl extends CI_Model {
 		parent:: __construct();
 	}
 
+	public function info_get($id)
+	{
+		$this->db->select('user.id as masterid,user.realname,master_detail.avatar,master_detail.views,
+			master_detail.likes,temple.name,temple.id as templeid');
+		$this->db->from('user');	
+		$this->db->join('master_detail','master_detail.masterid = user.id','left');	
+		$this->db->join('temple','temple.id = user.templeid');
+		$this->db->where('user.type','master');	
+		$this->db->where('user.id',$id);		
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function all_get($page, $num_per_page)
 	{
 		$this->db->select('user.id as masterid,user.realname,master_detail.avatar,master_detail.views,

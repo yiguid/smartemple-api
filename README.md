@@ -22,6 +22,8 @@ http://temple.irockwill.com/json/master/search
 返回与搜索关键字相关法师的信息,参数get('page'),get('limit'),get('searchmaster(搜索关键字)') 
 
 选中的法师：
+http://temple.irockwill.com/json/master/info
+返回选中法师的基本信息,参数get('masterid')
 http://temple.irockwill.com/json/master/timeline              
 返回选中法师的时光轴信息,参数get('page'),get('limit'),get('masterid')
 http://temple.irockwill.com/json/master/voice               
@@ -47,6 +49,8 @@ http://temple.irockwill.com/json/temple/search
 返回与搜索关键字相关寺院的信息,参数get('page'),get('limit'),get('searchtemple(搜索关键字)')
 
 选中的寺院：
+http://temple.irockwill.com/json/temple/info             
+返回选中寺院的基本信息,参数get('templeid')
 http://temple.irockwill.com/json/temple/donation             
 返回选中寺院的捐助信息,参数get('page'),get('limit'),get('templeid')
 http://temple.irockwill.com/json/temple/d_zhongchou           
@@ -60,7 +64,7 @@ http://temple.irockwill.com/json/temple/volunteer
 http://temple.irockwill.com/json/temple/wish                
 返回选中寺院的祈福信息,参数get('page'),get('limit'),get('templeid')
 http://temple.irockwill.com/json/temple/message
-插入留言,参数get('realname(用户名)'),get('content(留言内容)'),get('templeid'),get('location(用户地理位置)'),get('fromurl(字符串'app/qf')'),get('ip'),get('userid')
+插入留言,参数post('realname(用户名)'),post('content(留言内容)'),post('templeid'),post('location(用户地理位置)'),post('fromurl(字符串'app/qf')'),post('ip'),post('userid'),返回1 成功，0失败
 
 
 发现：

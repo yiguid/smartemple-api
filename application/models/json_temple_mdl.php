@@ -7,6 +7,20 @@ class Json_temple_mdl extends CI_Model {
 		parent:: __construct();
 	}
 
+	public function info_get($id)
+	{
+		$this->db->select('temple.id as templeid,user.id as masterid,temple.name,temple.province,temple.city,temple.master,temple.website,temple.homeimg,master_detail.avatar,temple_qf_count.qfcount as views');
+		$this->db->from('temple');		
+		$this->db->join('user','user.templeid = temple.id');
+		$this->db->join('master_detail','master_detail.masterid = user.id');
+		$this->db->join('temple_qf_count','temple_qf_count.templeid = temple.id');
+		$this->db->where('temple.closed',0);
+		$this->db->where('temple.verified',1);
+		$this->db->where('temple.id',$id);	
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function all_get($page, $num_per_page)
 	{
 		$this->db->select('temple.id as templeid,user.id as masterid,temple.name,temple.province,temple.city,temple.master,temple.website,temple.homeimg,master_detail.avatar,temple_qf_count.qfcount as views');
@@ -16,7 +30,8 @@ class Json_temple_mdl extends CI_Model {
 		$this->db->join('temple_qf_count','temple_qf_count.templeid = temple.id','left');
 		$this->db->where('temple.closed',0);
 		$this->db->where('temple.verified',1);
-		$this->db->where('user.type','master');			
+		$this->db->where('user.type','master');	
+		$this->db->where('master_detail.avatar !=','');		
 		$this->db->group_by('temple.id');
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);
 		$query = $this->db->get();
@@ -44,6 +59,7 @@ class Json_temple_mdl extends CI_Model {
 		$this->db->where('temple.closed',0);
 		$this->db->where('temple.verified',1);
 		$this->db->where('user.type','master');	
+		$this->db->where('master_detail.avatar !=','');
 		$this->db->order_by('temple.pos','desc');	
 		$this->db->group_by('temple.id');
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);
@@ -61,6 +77,7 @@ class Json_temple_mdl extends CI_Model {
 		$this->db->where('temple.closed',0);
 		$this->db->where('temple.verified',1);
 		$this->db->where('user.type','master');	
+		$this->db->where('master_detail.avatar !=','');
 		$this->db->order_by('temple_qf_count.qfcount','desc');	
 		$this->db->group_by('temple.id');
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);

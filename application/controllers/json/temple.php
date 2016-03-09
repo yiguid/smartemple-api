@@ -8,6 +8,13 @@ class Temple extends CI_Controller {
 		header('content-type:application/json;charset=utf8');  
 	}
 
+	public function info()
+	{	
+		$templeid = $this->input->get('templeid');	
+		$temple_list = $this->json_temple_mdl->info_get($templeid);	
+		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
+	}
+
 	public function all()
 	{	
 		$page = $this->input->get('page');
@@ -110,18 +117,18 @@ class Temple extends CI_Controller {
 	{		 	
 		$data = array(
 					'parentid' => '0',
-					'userid' => $this->input->get('realname'),
+					'userid' => $this->input->post('realname'),
 					'usertype' => 'user',
-					'content' => $this->input->get('content'),
+					'content' => $this->input->post('content'),
 					'donationcontent' => null,
 					'datetime' => date("Y-m-d H:i:s",strtotime('now +8 hours')),
-					'templeid' => $this->input->get('templeid'),
-					'location' => $this->input->get('location'),
+					'templeid' => $this->input->post('templeid'),
+					'location' => $this->input->post('location'),
 					'recordid' => null,
 					'donationorderid' => null,
-					'fromurl' => $this->input->get('fromurl'),
-					'ip' => $this->input->get('ip'),
-					'userrealid' => $this->input->get('userid'),
+					'fromurl' => $this->input->post('fromurl'),
+					'ip' => $this->input->post('ip'),
+					'userrealid' => $this->input->post('userid'),
 					'status' => '1'
 				);			
 		if($this->json_temple_mdl->message_insert($data))
