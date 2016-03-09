@@ -12,7 +12,7 @@ class User extends CI_Controller {
 	{		
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$userid = $this->input->post('userid');
+		$userid = $this->input->get('userid');
 		$user_list = $this->json_user_mdl->donation_get($userid,$page,$limit);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
@@ -21,7 +21,7 @@ class User extends CI_Controller {
 	{	
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$userid = $this->input->post('userid');
+		$userid = $this->input->get('userid');
 		$user_list = $this->json_user_mdl->donation_zhongchou_get($userid,$page,$limit);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
@@ -30,7 +30,7 @@ class User extends CI_Controller {
 	{	
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$userid = $this->input->post('userid');
+		$userid = $this->input->get('userid');
 		$user_list = $this->json_user_mdl->wish_get($userid,$page,$limit);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
@@ -39,7 +39,7 @@ class User extends CI_Controller {
 	{
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$userid = $this->input->post('userid');
+		$userid = $this->input->get('userid');
 		$user_list = $this->json_user_mdl->activity_get($userid,$page,$limit);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
@@ -48,14 +48,14 @@ class User extends CI_Controller {
 	{				
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$userid = $this->input->post('userid');
+		$userid = $this->input->get('userid');
 		$user_list = $this->json_user_mdl->volunteer_get($userid,$page,$limit);	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";	
 	}
 
 	public function info()
 	{					
-		$userid = $this->input->post('userid');
+		$userid = $this->input->get('userid');
 		$user_list = $this->json_user_mdl->info_get($userid);
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";	
 	}
@@ -100,22 +100,22 @@ class User extends CI_Controller {
 			$this->load->view('user/home/setting',$this->data);
 		}else{
 			$user = array(
-				'gender' => $this->input->post('gender'),
-				'age' => $this->input->post('age'),
-				'idcard' => $this->input->post('idcard'),
-				'mobile' => $this->input->post('mobile'),
-				'company' => $this->input->post('company'),
-				'job' => $this->input->post('job'),
-				'qq' => $this->input->post('qq'),
-				'weixin' => $this->input->post('weixin'),
-				'email' => $this->input->post('email'),
-				'address' => $this->input->post('address'),
-				'minzu' => $this->input->post('minzu'),
-				'xueli' => $this->input->post('xueli'),
-				'hunfou' => $this->input->post('hunfou'),
-				'guiyifou' => $this->input->post('guiyifou'),
-				'guiyitime' => $this->input->post('guiyitime'),
-				'more' => $this->input->post('more')
+				'gender' => $this->input->get('gender'),
+				'age' => $this->input->get('age'),
+				'idcard' => $this->input->get('idcard'),
+				'mobile' => $this->input->get('mobile'),
+				'company' => $this->input->get('company'),
+				'job' => $this->input->get('job'),
+				'qq' => $this->input->get('qq'),
+				'weixin' => $this->input->get('weixin'),
+				'email' => $this->input->get('email'),
+				'address' => $this->input->get('address'),
+				'minzu' => $this->input->get('minzu'),
+				'xueli' => $this->input->get('xueli'),
+				'hunfou' => $this->input->get('hunfou'),
+				'guiyifou' => $this->input->get('guiyifou'),
+				'guiyitime' => $this->input->get('guiyitime'),
+				'more' => $this->input->get('more')
 			);
 			$this->json_user_mdl->update_detail($id,$user);
 			$this->session->set_userdata('userdetail',true);

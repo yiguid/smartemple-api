@@ -36,7 +36,7 @@ class Master extends CI_Controller {
 	{		 	
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$master_name = $this->input->post("searchmaster");		
+		$master_name = $this->input->get("searchmaster");		
 		$master_list = $this->json_master_mdl->search_get($master_name,$page,$limit);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
@@ -45,7 +45,7 @@ class Master extends CI_Controller {
 	{				
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$masterid = $this->input->post('masterid');
+		$masterid = $this->input->get('masterid');
 		$master_list = $this->json_master_mdl->timeline_get($masterid,$page,$limit);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
@@ -54,7 +54,7 @@ class Master extends CI_Controller {
 	{				
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$masterid = $this->input->post('masterid');
+		$masterid = $this->input->get('masterid');
 		$master_list = $this->json_master_mdl->voice_get($masterid,$page,$limit);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
@@ -63,26 +63,26 @@ class Master extends CI_Controller {
 	{				
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$masterid = $this->input->post('masterid');
+		$masterid = $this->input->get('masterid');
 		$master_list = $this->json_master_mdl->question_get($masterid,$page,$limit);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
 	public function views()
 	{		
-		$masterid = $this->input->post('masterid');
+		$masterid = $this->input->get('masterid');
 		$this->json_master_mdl->views_add($masterid);			
 	}
 
 	public function likes()
 	{		
-		$masterid = $this->input->post('masterid');
+		$masterid = $this->input->get('masterid');
 		$this->json_master_mdl->likes_add($masterid);			
 	}
 
 	public function liked()
 	{		
-		$masterid = $this->input->post('masterid');
+		$masterid = $this->input->get('masterid');
 		$this->json_master_mdl->liked_low($masterid);			
 	}
 

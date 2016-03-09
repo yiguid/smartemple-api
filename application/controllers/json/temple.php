@@ -43,7 +43,7 @@ class Temple extends CI_Controller {
 	{		 	
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$temple_name = $this->input->post("searchtemple");	
+		$temple_name = $this->input->get("searchtemple");	
 		$temple_list = $this->json_temple_mdl->search_get($temple_name,$page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
@@ -52,7 +52,7 @@ class Temple extends CI_Controller {
 	{		 			
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$templeid = $this->input->post('templeid');		
+		$templeid = $this->input->get('templeid');		
 		$temple_list = $this->json_temple_mdl->donation_get($templeid,$page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
@@ -61,7 +61,7 @@ class Temple extends CI_Controller {
 	{		 				
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$templeid = $this->input->post('templeid');		
+		$templeid = $this->input->get('templeid');		
 		$temple_list = $this->json_temple_mdl->d_zhongchou_get($templeid,$page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
@@ -70,7 +70,7 @@ class Temple extends CI_Controller {
 	{		
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$templeid = $this->input->post('templeid');	 			
+		$templeid = $this->input->get('templeid');	 			
 		$temple_list = $this->json_temple_mdl->news_get($templeid,$page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
@@ -79,7 +79,7 @@ class Temple extends CI_Controller {
 	{		 	
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$templeid = $this->input->post('templeid');				
+		$templeid = $this->input->get('templeid');				
 		$temple_list = $this->json_temple_mdl->activity_get($templeid,$page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
@@ -88,7 +88,7 @@ class Temple extends CI_Controller {
 	{		 		
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$templeid = $this->input->post('templeid');			
+		$templeid = $this->input->get('templeid');			
 		$temple_list = $this->json_temple_mdl->volunteer_get($templeid,$page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
@@ -97,7 +97,7 @@ class Temple extends CI_Controller {
 	{		 	
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$templeid = $this->input->post('templeid');				
+		$templeid = $this->input->get('templeid');				
 		$temple_list = $this->json_temple_mdl->wish_get($templeid,$page,$limit);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
