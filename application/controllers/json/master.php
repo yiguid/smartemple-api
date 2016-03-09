@@ -5,13 +5,20 @@ class Master extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('json_master_mdl');
+		$this->load->model('accesstoken_mdl');
 		header('content-type:application/json;charset=utf8');  
 	}
 
 	public function info()
 	{		
 		$masterid = $this->input->get('masterid');
-		$master_list = $this->json_master_mdl->info_get($masterid);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$master_list = $this->json_master_mdl->info_get($masterid);	
+		}
+		else
+			$master_list = array('code'=>-1,'msg'=>'error');
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
@@ -19,7 +26,13 @@ class Master extends CI_Controller {
 	{		
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$master_list = $this->json_master_mdl->all_get($page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$master_list = $this->json_master_mdl->all_get($page,$limit);
+		}
+		else
+			$master_list = array('code'=>-1,'msg'=>'error');	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
@@ -27,7 +40,13 @@ class Master extends CI_Controller {
 	{
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$master_list = $this->json_master_mdl->recommend_get($page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$master_list = $this->json_master_mdl->recommend_get($page,$limit);	
+		}
+		else
+			$master_list = array('code'=>-1,'msg'=>'error');
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
@@ -35,7 +54,13 @@ class Master extends CI_Controller {
 	{
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$master_list = $this->json_master_mdl->hot_get($page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$master_list = $this->json_master_mdl->hot_get($page,$limit);
+		}
+		else
+			$master_list = array('code'=>-1,'msg'=>'error');	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
@@ -43,8 +68,14 @@ class Master extends CI_Controller {
 	{		 	
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$master_name = $this->input->get("searchmaster");		
-		$master_list = $this->json_master_mdl->search_get($master_name,$page,$limit);	
+		$master_name = $this->input->get("searchmaster");	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{	
+			$master_list = $this->json_master_mdl->search_get($master_name,$page,$limit);	
+		}
+		else
+			$master_list = array('code'=>-1,'msg'=>'error');
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
@@ -53,7 +84,13 @@ class Master extends CI_Controller {
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
 		$masterid = $this->input->get('masterid');
-		$master_list = $this->json_master_mdl->timeline_get($masterid,$page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$master_list = $this->json_master_mdl->timeline_get($masterid,$page,$limit);	
+		}
+		else
+			$master_list = array('code'=>-1,'msg'=>'error');
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
@@ -62,7 +99,13 @@ class Master extends CI_Controller {
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
 		$masterid = $this->input->get('masterid');
-		$master_list = $this->json_master_mdl->voice_get($masterid,$page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$master_list = $this->json_master_mdl->voice_get($masterid,$page,$limit);	
+		}
+		else
+			$master_list = array('code'=>-1,'msg'=>'error');
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 
@@ -71,7 +114,13 @@ class Master extends CI_Controller {
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
 		$masterid = $this->input->get('masterid');
-		$master_list = $this->json_master_mdl->question_get($masterid,$page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$master_list = $this->json_master_mdl->question_get($masterid,$page,$limit);
+		}
+		else
+			$master_list = array('code'=>-1,'msg'=>'error');	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
 

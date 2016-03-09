@@ -6,6 +6,8 @@ class Register extends CI_Controller {
 		parent::__construct();		
 		$this->load->model('json_register_mdl');
 		$this->load->model('sms_mdl');
+		$this->load->model('accesstoken_mdl');
+		header('content-type:application/json;charset=utf8'); 
 	}
 
 	public function vcode_commit()

@@ -5,6 +5,7 @@ class User extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('json_user_mdl');
+		$this->load->model('accesstoken_mdl');
 		header('content-type:application/json;charset=utf8');  
 	}
 
@@ -13,7 +14,13 @@ class User extends CI_Controller {
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
 		$userid = $this->input->get('userid');
-		$user_list = $this->json_user_mdl->donation_get($userid,$page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$user_list = $this->json_user_mdl->donation_get($userid,$page,$limit);	
+		}
+		else
+			$user_list = array('code'=>-1,'msg'=>'error');
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
 
@@ -22,7 +29,13 @@ class User extends CI_Controller {
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
 		$userid = $this->input->get('userid');
-		$user_list = $this->json_user_mdl->donation_zhongchou_get($userid,$page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$user_list = $this->json_user_mdl->donation_zhongchou_get($userid,$page,$limit);
+		}
+		else
+			$user_list = array('code'=>-1,'msg'=>'error');	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
 
@@ -31,7 +44,13 @@ class User extends CI_Controller {
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
 		$userid = $this->input->get('userid');
-		$user_list = $this->json_user_mdl->wish_get($userid,$page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$user_list = $this->json_user_mdl->wish_get($userid,$page,$limit);
+		}
+		else
+			$user_list = array('code'=>-1,'msg'=>'error');		
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
 
@@ -40,7 +59,13 @@ class User extends CI_Controller {
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
 		$userid = $this->input->get('userid');
-		$user_list = $this->json_user_mdl->activity_get($userid,$page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$user_list = $this->json_user_mdl->activity_get($userid,$page,$limit);	
+		}
+		else
+			$user_list = array('code'=>-1,'msg'=>'error');	
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";
 	}
 
@@ -49,14 +74,26 @@ class User extends CI_Controller {
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
 		$userid = $this->input->get('userid');
-		$user_list = $this->json_user_mdl->volunteer_get($userid,$page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$user_list = $this->json_user_mdl->volunteer_get($userid,$page,$limit);	
+		}
+		else
+			$user_list = array('code'=>-1,'msg'=>'error');
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";	
 	}
 
 	public function info()
 	{					
 		$userid = $this->input->get('userid');
-		$user_list = $this->json_user_mdl->info_get($userid);
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$user_list = $this->json_user_mdl->info_get($userid);
+		}
+		else
+			$user_list = array('code'=>-1,'msg'=>'error');
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user_list))."}";	
 	}
 

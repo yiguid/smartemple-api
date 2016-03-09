@@ -13,11 +13,11 @@ class Login extends CI_Controller {
 	{	
 		$username = $this->input->post("username");
 		$password = $this->input->post("password");
-		if($this->user_mdl->login($username,$password)){
-			$user = $this->user_mdl->info_username($username);
-			$date_str = date("Y-m-d");
+		if($this->user_mdl->login($username,$password)){                     //判断用户存在
+			$user = $this->user_mdl->info_username($username);	
+			$date_str = date('Y-m-d');		     
 			$date_str = date('Y-m-d',strtotime("$date_str + 7 day"));
-			if($this->accesstoken_mdl->exist($user->id)){
+			if($this->accesstoken_mdl->exist($user->id)){                    //判断token存在
 				$res = $this->accesstoken_mdl->info($user->id);
 				$access_token = $res->token;
 				$this->accesstoken_mdl->update($user->id,array('expiretime'=>$date_str));
@@ -33,7 +33,7 @@ class Login extends CI_Controller {
 		echo "{\"user\":".$this->json_unescaped_unicode(json_encode($user))."}";
 	}
 
-	public function validate()
+	public function validate()                                        //验证token
 	{
 		$access_token = $this->input->post("access_token");
 		if($this->accesstoken_mdl->validate($access_token))

@@ -27,7 +27,7 @@ class Json_find_mdl extends CI_Model {
 
 	public function master_get($page, $num_per_page)
 	{
-		$this->db->select('temple.id as templeid,user.id as masterid,user.realname,master_detail.avatar,master_detail.views,temple.name');
+		$this->db->select('user.id as masterid,user.realname,master_detail.avatar,master_detail.views,master_detail.likes,temple.name,temple.id as templeid');
 		$this->db->from('user');	
 		$this->db->join('master_detail','master_detail.masterid = user.id','left');
 		$this->db->join('temple','temple.id = user.templeid');		

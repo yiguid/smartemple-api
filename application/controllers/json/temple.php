@@ -5,36 +5,52 @@ class Temple extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('json_temple_mdl');
+		$this->load->model('accesstoken_mdl');
 		header('content-type:application/json;charset=utf8');  
 	}
 
 	public function info()
 	{	
 		$templeid = $this->input->get('templeid');	
-		$temple_list = $this->json_temple_mdl->info_get($templeid);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$temple_list = $this->json_temple_mdl->info_get($templeid);	
+		}
+		else
+			$temple_list = array('code'=>-1,'msg'=>'error');
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
 	public function all()
 	{	
 		$page = $this->input->get('page');
-		$limit = $this->input->get('limit');		
-		$temple_list = $this->json_temple_mdl->all_get($page,$limit);	
+		$limit = $this->input->get('limit');	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{	
+			$temple_list = $this->json_temple_mdl->all_get($page,$limit);	
+		}
+		else
+			$temple_list = array('code'=>-1,'msg'=>'error');
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
 	public function attention()
-	{
-		$id = $this->session->userdata('id');
-		$temple_list = $this->json_temple_mdl->attention_get($templeid_arr,$id,$page,$limit);	
-		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
+	{		
 	}
 
 	public function recommend()
 	{
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$temple_list = $this->json_temple_mdl->recommend_get($page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$temple_list = $this->json_temple_mdl->recommend_get($page,$limit);	
+		}
+		else
+			$temple_list = array('code'=>-1,'msg'=>'error');
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
@@ -42,7 +58,13 @@ class Temple extends CI_Controller {
 	{
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$temple_list = $this->json_temple_mdl->hot_get($page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$temple_list = $this->json_temple_mdl->hot_get($page,$limit);
+		}
+		else
+			$temple_list = array('code'=>-1,'msg'=>'error');	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
@@ -51,7 +73,13 @@ class Temple extends CI_Controller {
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
 		$temple_name = $this->input->get("searchtemple");	
-		$temple_list = $this->json_temple_mdl->search_get($temple_name,$page,$limit);	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{
+			$temple_list = $this->json_temple_mdl->search_get($temple_name,$page,$limit);
+		}
+		else
+			$temple_list = array('code'=>-1,'msg'=>'error');		
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
@@ -59,8 +87,14 @@ class Temple extends CI_Controller {
 	{		 			
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$templeid = $this->input->get('templeid');		
-		$temple_list = $this->json_temple_mdl->donation_get($templeid,$page,$limit);	
+		$templeid = $this->input->get('templeid');	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{	
+			$temple_list = $this->json_temple_mdl->donation_get($templeid,$page,$limit);	
+		}
+		else
+			$temple_list = array('code'=>-1,'msg'=>'error');	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
@@ -68,8 +102,14 @@ class Temple extends CI_Controller {
 	{		 				
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$templeid = $this->input->get('templeid');		
-		$temple_list = $this->json_temple_mdl->d_zhongchou_get($templeid,$page,$limit);	
+		$templeid = $this->input->get('templeid');	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{	
+			$temple_list = $this->json_temple_mdl->d_zhongchou_get($templeid,$page,$limit);	
+		}
+		else
+			$temple_list = array('code'=>-1,'msg'=>'error');	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
@@ -77,8 +117,14 @@ class Temple extends CI_Controller {
 	{		
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$templeid = $this->input->get('templeid');	 			
-		$temple_list = $this->json_temple_mdl->news_get($templeid,$page,$limit);	
+		$templeid = $this->input->get('templeid');	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{ 			
+			$temple_list = $this->json_temple_mdl->news_get($templeid,$page,$limit);	
+		}
+		else
+			$temple_list = array('code'=>-1,'msg'=>'error');	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
@@ -86,8 +132,14 @@ class Temple extends CI_Controller {
 	{		 	
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$templeid = $this->input->get('templeid');				
-		$temple_list = $this->json_temple_mdl->activity_get($templeid,$page,$limit);	
+		$templeid = $this->input->get('templeid');	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{			
+			$temple_list = $this->json_temple_mdl->activity_get($templeid,$page,$limit);
+		}
+		else
+			$temple_list = array('code'=>-1,'msg'=>'error');	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
@@ -95,8 +147,14 @@ class Temple extends CI_Controller {
 	{		 		
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$templeid = $this->input->get('templeid');			
-		$temple_list = $this->json_temple_mdl->volunteer_get($templeid,$page,$limit);	
+		$templeid = $this->input->get('templeid');	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{			
+			$temple_list = $this->json_temple_mdl->volunteer_get($templeid,$page,$limit);
+		}
+		else
+			$temple_list = array('code'=>-1,'msg'=>'error');	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
@@ -104,8 +162,14 @@ class Temple extends CI_Controller {
 	{		 	
 		$page = $this->input->get('page');
 		$limit = $this->input->get('limit');
-		$templeid = $this->input->get('templeid');				
-		$temple_list = $this->json_temple_mdl->wish_get($templeid,$page,$limit);	
+		$templeid = $this->input->get('templeid');	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{				
+			$temple_list = $this->json_temple_mdl->wish_get($templeid,$page,$limit);	
+		}
+		else
+			$temple_list = array('code'=>-1,'msg'=>'error');	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}
 
@@ -115,7 +179,10 @@ class Temple extends CI_Controller {
 
 	public function message()
 	{		 	
-		$data = array(
+		$access_token = $this->input->post("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{	
+			$data = array(
 					'parentid' => '0',
 					'userid' => $this->input->post('realname'),
 					'usertype' => 'user',
@@ -138,6 +205,12 @@ class Temple extends CI_Controller {
 		else
 		{
 			echo 0;return ;
+		}
+		}
+		else
+		{
+			$temple_list = array('code'=>-1,'msg'=>'error');
+			echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";	
 		}
 		
 	}
