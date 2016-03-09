@@ -35,7 +35,7 @@ class Temple extends CI_Controller {
 
 	public function search($page = 1,$num_per_page = 10)
 	{		 	
-		$temple_name = $this->input->post("searchtemple");
+		$temple_name = $this->input->post("searchtemple");	
 		$temple_list = $this->json_temple_mdl->search_get($temple_name,$page,$num_per_page);	
 		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
 	}

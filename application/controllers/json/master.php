@@ -28,7 +28,7 @@ class Master extends CI_Controller {
 
 	public function search($page = 1,$num_per_page = 10)
 	{		 	
-		$master_name = $this->input->post("searchmaster");
+		$master_name = $this->input->post("searchmaster");		
 		$master_list = $this->json_master_mdl->search_get($master_name,$page,$num_per_page);	
 		echo "{\"master\":".$this->json_unescaped_unicode(json_encode($master_list))."}";
 	}
