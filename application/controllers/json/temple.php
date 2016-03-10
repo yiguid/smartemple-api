@@ -141,7 +141,7 @@ class Temple extends CI_Controller {
 			$i = 0;$j = 0;$s = 0;
 			while($i < count($activity) && $j < count($volunteer))
 			{
-				if($activity[$i]->activityinputtime >= $volunteer[$j]->volunteerinputtime)
+				if($activity[$i]->inputtime >= $volunteer[$j]->inputtime)
 				{														
 					$obj = $activity[$i];
 					$obj->type = 'activity';	
