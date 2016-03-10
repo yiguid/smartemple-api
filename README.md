@@ -69,6 +69,8 @@ http://temple.irockwill.com/json/temple/wish
 返回选中寺院的祈福信息,参数get('page'),get('limit'),get('templeid'),get('access_token')
 http://temple.irockwill.com/json/temple/message
 插入留言,参数post('realname(用户名)'),post('content(留言内容)'),post('templeid'),post('location(用户地理位置)'),post('fromurl(字符串'app/qf')'),post('ip'),post('userid'),post('access_token')返回1 成功，0失败
+http://temple.irockwill.com/json/temple/ac_views
+选中活动、义工的访问量+1,参数post('id'),post('type'),post('access_token')
 
 
 发现：

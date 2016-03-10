@@ -181,9 +181,16 @@ class Json_temple_mdl extends CI_Model {
 
 	public function views_add($id)
 	{
-		$this->db->set('','+1',false);
+		$this->db->set('views','views+1',false);
 	 	$this->db->where('templeid',$id); 
 		$this->db->update('');                                            
+	}
+
+	public function ac_views_get($id,$type)
+	{
+		$this->db->set('views','views+1',false);
+	 	$this->db->where('id',$id); 
+		$this->db->update($type);                                            
 	}
 
 	public function message_insert($data)
