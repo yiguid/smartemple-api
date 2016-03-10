@@ -146,7 +146,7 @@ class Json_temple_mdl extends CI_Model {
 
 	public function activity_get($id, $page, $num_per_page)
 	{		
-		$this->db->select('id,title,inputtime,views,like');
+		$this->db->select('id,title,description,starttime,endtime,location,views,like');
 		$this->db->from('activity');		
 		$this->db->where('hostid',$id);
 		$this->db->order_by('inputtime','desc');						
@@ -190,6 +190,35 @@ class Json_temple_mdl extends CI_Model {
 	{
 		$this->db->insert('wishboard',$data);
 		return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
+	}
+
+	public function get_income_count($templeid,$rolltime = 'all')
+	{
+		//原有的是统计的供养的物品总数量，实际应该是总人数，一个订单可能有多个物品供养
+		// $this->db->select('sum(do.total) as income, sum(toic.count) as count');
+		$this->db->select('sum(do.total) as income, count(do.total) as count');
+        $this->db->from('donation_order do');
+        // $this->db->join('temple_order_item_count toic','do.id=toic.orderid');
+        if($templeid != 0)
+        	$this->db->where('templeid',$templeid);
+        $this->db->where('status','支付成功');
+        //这里不能直接or，要限定templeid了再or
+        //$this->db->or_where('status','登记成功');
+        //只显示本月的month，只显示本日的day
+        if($rolltime == 'month'){
+        	$date_str = date("Y-m");
+			$this->db->where('do.ordertime >',$date_str);
+        }else if($rolltime == 'day'){
+        	$date_str = date("Y-m-d");
+			$this->db->where('do.ordertime >',$date_str);
+        }else{
+        	//全部显示，不执行
+        	;
+        }
+
+        $query = $this->db->get();
+        $entry = $query->row();
+        return $entry;
 	}
 }
 ?>

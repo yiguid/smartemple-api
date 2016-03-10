@@ -53,6 +53,8 @@ http://temple.irockwill.com/json/temple/search
 返回与搜索关键字相关寺院的信息,参数get('page'),get('limit'),get('searchtemple(搜索关键字)'),get('access_token')
 
 选中的寺院：
+http://temple.irockwill.com/json/temple/income_count
+返回选中寺院的基本信息,参数get('templeid'),get('access_token'),get('rolltime(month取本月，day取当天，不带此参数取全部)')
 http://temple.irockwill.com/json/temple/info             
 返回选中寺院的基本信息,参数get('templeid'),get('access_token')
 http://temple.irockwill.com/json/temple/donation             

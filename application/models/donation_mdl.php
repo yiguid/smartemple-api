@@ -111,21 +111,6 @@ class Donation_mdl extends CI_Model {
 		return $query->result();
 	}
 
-	public function get_temple_order_income($templeid)
-	{
-		$this->db->select('sum(do.total) as income, sum(toic.count) as count');
-        $this->db->from('donation_order do');
-        $this->db->join('temple_order_item_count toic','do.id=toic.orderid');
-        $this->db->where('templeid',$templeid);
-        $this->db->where('status','支付成功');
-        //这里不能直接or，要限定templeid了再or
-        //$this->db->or_where('status','登记成功');
-        $query = $this->db->get();
-        $entry = $query->row();
-        return $entry;
-	}
-
-	$this->data['donation_info'] = $this->donation_mdl->get_temple_order_income($templeid, $rolltime);
 	public function get_temple_order_income($templeid,$rolltime = 'all')
 	{
 		//原有的是统计的供养的物品总数量，实际应该是总人数，一个订单可能有多个物品供养

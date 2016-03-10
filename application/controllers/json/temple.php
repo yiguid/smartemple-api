@@ -215,6 +215,20 @@ class Temple extends CI_Controller {
 		
 	}
 
+	public function income_count()
+	{	
+		$rolltime = $this->input->get('rolltime');
+		$templeid = $this->input->get('templeid');	
+		$access_token = $this->input->get("access_token");
+		if($this->accesstoken_mdl->validate($access_token))
+		{	
+			$temple_list = $this->json_temple_mdl->get_income_count($templeid, $rolltime);	 	
+		}
+		else
+			$temple_list = array('code'=>-1,'msg'=>'error');	
+		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";				
+	}
+
 	private function json_unescaped_unicode($str)
 	{
 		return preg_replace_callback(

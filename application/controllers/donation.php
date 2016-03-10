@@ -148,7 +148,7 @@ class Donation extends CI_Controller {
 		}
 		$this->cart_mdl->destroy();
 		redirect('temple','refresh');
-		}
+	}
 }
 
 /* End of file welcome.php */
