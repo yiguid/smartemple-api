@@ -50,6 +50,31 @@ class Json_find_mdl extends CI_Model {
 		return $query->result();
 	}
 
+	public function new_views_add($id)
+	{
+		$this->db->set('views','views+1',false);
+	 	$this->db->where('id',$id); 
+		$this->db->update('news');                                            
+	}
+
+	public function new_detail_get($id)
+	{
+		$this->db->select('*');
+		$this->db->from('news');			
+		$this->db->where('id',$id);	
+		$query = $this->db->get();
+		return $query->row();                                            
+	}
+
+	public function ac_detail_get($id,$type)
+	{
+		$this->db->select('*');
+		$this->db->from($type);			
+		$this->db->where('id',$id);	
+		$query = $this->db->get();
+		return $query->row();                                            
+	}
+
 	public function activity_get($page, $num_per_page)
 	{
 		$time = date('Y-m-d H:i:s',strtotime('now'));
@@ -60,6 +85,13 @@ class Json_find_mdl extends CI_Model {
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);	
 		$query = $this->db->get();
 		return $query->result();
+	}	
+
+	public function ac_views_add($id,$type)
+	{
+		$this->db->set('views','views+1',false);
+	 	$this->db->where('id',$id); 
+		$this->db->update($type);                                            
 	}
 }
 ?>

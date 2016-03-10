@@ -197,23 +197,7 @@ class Temple extends CI_Controller {
 
 	public function views()
 	{		 							
-	}
-
-	public function ac_views()
-	{		 
-		$id = $this->input->post('id');
-		$type = $this->input->post('type');			
-		$access_token = $this->input->post("access_token");
-		if($this->accesstoken_mdl->validate($access_token))
-		{			
-			$this->json_temple_mdl->ac_views_get($id,$type);
-		}
-		else
-		{
-			$temple_list = array('code'=>-1,'msg'=>'error');	
-			echo $this->json_unescaped_unicode(json_encode($temple_list));	
-		}			
-	}
+	}	
 
 	public function message()
 	{		 	
