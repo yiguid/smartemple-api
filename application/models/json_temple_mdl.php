@@ -145,10 +145,10 @@ class Json_temple_mdl extends CI_Model {
 	}
 
 	public function activity_get($id, $page, $num_per_page)
-	{		
+	{				
 		$this->db->select('id,title,description,starttime,endtime,location,views,like');
-		$this->db->from('activity');		
-		$this->db->where('hostid',$id);
+		$this->db->from('activity');				
+		$this->db->where('hostid',$id);	
 		$this->db->order_by('inputtime','desc');						
 		$this->db->limit($num_per_page,($page - 1) * $num_per_page);	
 		$query = $this->db->get();
@@ -157,7 +157,7 @@ class Json_temple_mdl extends CI_Model {
 
 	public function volunteer_get($id, $page, $num_per_page)
 	{
-		$this->db->select('id,title,inputtime,views,like');
+		$this->db->select('id,title,description,starttime,endtime,location,views,like');
 		$this->db->from('volunteer');		
 		$this->db->where('hostid',$id);	
 		$this->db->order_by('inputtime','desc');

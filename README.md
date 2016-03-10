@@ -64,9 +64,7 @@ http://temple.irockwill.com/json/temple/d_zhongchou
 http://temple.irockwill.com/json/temple/news                 
 返回选中寺院的新闻信息,参数get('page'),get('limit'),get('templeid'),get('access_token')
 http://temple.irockwill.com/json/temple/activity              
-返回选中寺院的活动信息,参数get('page'),get('limit'),get('templeid'),get('access_token')
-http://temple.irockwill.com/json/temple/volunteer              
-返回选中寺院的义工信息,参数get('page'),get('limit'),get('templeid'),get('access_token')
+返回选中寺院的活动、义工信息,参数get('page'),get('limit'),get('templeid'),get('access_token')
 http://temple.irockwill.com/json/temple/wish                
 返回选中寺院的祈福信息,参数get('page'),get('limit'),get('templeid'),get('access_token')
 http://temple.irockwill.com/json/temple/message

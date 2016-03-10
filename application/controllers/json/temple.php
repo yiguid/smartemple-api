@@ -136,26 +136,12 @@ class Temple extends CI_Controller {
 		$access_token = $this->input->get("access_token");
 		if($this->accesstoken_mdl->validate($access_token))
 		{			
-			$temple_list = $this->json_temple_mdl->activity_get($templeid,$page,$limit);
+			$activity_list['activity'] = $this->json_temple_mdl->activity_get($templeid,$page,$limit);
+			$activity_list['volunteer'] = $this->json_temple_mdl->volunteer_get($templeid,$page,$limit);
 		}
 		else
 			$temple_list = array('code'=>-1,'msg'=>'error');	
-		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
-	}
-
-	public function volunteer()
-	{		 		
-		$page = $this->input->get('page');
-		$limit = $this->input->get('limit');
-		$templeid = $this->input->get('templeid');	
-		$access_token = $this->input->get("access_token");
-		if($this->accesstoken_mdl->validate($access_token))
-		{			
-			$temple_list = $this->json_temple_mdl->volunteer_get($templeid,$page,$limit);
-		}
-		else
-			$temple_list = array('code'=>-1,'msg'=>'error');	
-		echo "{\"temple\":".$this->json_unescaped_unicode(json_encode($temple_list))."}";
+		echo $this->json_unescaped_unicode(json_encode($activity_list));		 
 	}
 
 	public function wish()
