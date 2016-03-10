@@ -174,9 +174,10 @@ class Temple extends CI_Controller {
 				}
 			}						
 		}
+
 		else
-			$temple_list = array('code'=>-1,'msg'=>'error');	
-		echo $this->json_unescaped_unicode(json_encode($temple_list)); 
+			$temple_list = array('code'=>-1,'msg'=>'error');			
+		echo $this->json_unescaped_unicode(json_encode(array_slice($temple_list,0,$limit))); 
 	}
 
 	public function wish()
