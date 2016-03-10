@@ -136,12 +136,47 @@ class Temple extends CI_Controller {
 		$access_token = $this->input->get("access_token");
 		if($this->accesstoken_mdl->validate($access_token))
 		{			
-			$activity_list['activity'] = $this->json_temple_mdl->activity_get($templeid,$page,$limit);
-			$activity_list['volunteer'] = $this->json_temple_mdl->volunteer_get($templeid,$page,$limit);
+			$activity = $this->json_temple_mdl->activity_get($templeid,$page,$limit);
+			$volunteer = $this->json_temple_mdl->volunteer_get($templeid,$page,$limit);
+			$i = 0;$j = 0;$s = 0;
+			while($i < count($activity) && $j < count($volunteer))
+			{
+				if($activity[$i]->activityinputtime >= $volunteer[$j]->volunteerinputtime)
+				{														
+					$obj = $activity[$i];
+					$obj->type = 'activity';	
+					$temple_list[$s] = $obj;							
+					$s++;$i++;
+				}
+				else
+				{
+					$obj = $volunteer[$j];
+					$obj->type = 'volunteer';
+					$temple_list[$s] = $obj;					
+					$s++;$j++;
+				}
+			}			
+			while($s != count($activity)+count($volunteer))
+			{
+				if($i < count($activity))
+				{
+					$obj = $activity[$i];
+					$obj->type = 'activity';	
+					$temple_list[$s] = $obj;							
+					$s++;$i++;
+				}
+				else
+				{
+					$obj = $volunteer[$j];
+					$obj->type = 'volunteer';
+					$temple_list[$s] = $obj;					
+					$s++;$j++;
+				}
+			}						
 		}
 		else
 			$temple_list = array('code'=>-1,'msg'=>'error');	
-		echo $this->json_unescaped_unicode(json_encode($activity_list));		 
+		echo $this->json_unescaped_unicode(json_encode($temple_list)); 
 	}
 
 	public function wish()
